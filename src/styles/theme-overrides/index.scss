@@ -1,0 +1,142 @@
+// Define variable defaults
+$body-bg: #fff;
+$body-color: #333;
+
+
+$theme-colors: (
+  "primary": #FFB600,
+  "danger": #ff4136
+);
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
+@import '~bootstrap';
+@import '~bootstrap-vue';
+
+
+#app {
+  // background: url(~@/assets/img/bottom-bg@2x.png) center 100% / auto 1400px no-repeat;
+}
+.container {
+  max-width: 1056px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+// @media (max-width: 992px) {
+//   // .container-lg, .container-md, .container-sm, .container {
+//   //   max-width: 960px;
+//   // }
+// }
+
+
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+      max-width: 1230px;
+  }
+}
+
+.b-toast {
+ 
+}
+
+
+
+.toast {
+  width: 379px;
+  border-radius: 20px;
+
+  & .toast-body {
+    padding: 10px;
+  }
+
+  & .toast-content {
+    display: flex;
+    padding: 14px;
+  }
+
+
+  & .toast-icon {
+    width: 30px;
+    height: 30px;
+  }
+ 
+  & .text-wrapper {
+    margin-left: 25px;
+  }
+
+  & .toast-text {
+    color: #18F195;
+    font-size: 18px;
+  }
+
+  & .toast-link {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  & .progress {
+    height: 4px;
+    background: #000000;
+    border-radius: 3px;
+    width: 100%;
+
+    & .progress-inner {
+      width: 0;
+      height: 4px;
+      background: #18F195;
+      border-radius: 3px;
+      transition: all 2.9s ease-out;
+
+      &.fill {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.b-toast-success {
+  .toast {
+    background-color: #031F13 !important;
+
+    & .toast-text {
+      color: #18F195;
+    }
+    & .progress {
+      & .progress-inner {
+        background: #18F195;
+      }
+    }
+    
+  }
+}
+
+.b-toast-error {
+  .toast {
+    background-color: #20100E !important;
+
+    & .toast-text {
+      color: #E37165;
+    }
+    & .progress {
+      & .progress-inner {
+        background: #B66562;
+      }
+    }
+  }
+}
+
+.b-toast-pending {
+  .toast {
+    background-color:  #06243C !important;
+  }
+}
+
+.toast-body {
+}
+
+.toast-content {
+  
+}

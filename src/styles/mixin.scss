@@ -1,0 +1,264 @@
+/* stylelint-disable */
+/* Font
+-------------------------- */
+
+@mixin kr-font($fs, $lh, $fc: $font-color-title, $fw: 400) {
+    font-size: $fs;
+    line-height: $lh;
+    color: $fc;
+    font-weight: $fw;
+  }
+  
+  @mixin kr-fc($font: $font-size-base, $color: $color-grey) {
+    font-size: $font;
+    color: $color;
+  }
+  
+  @mixin font-title-1($fc: $font-color-title, $fw: 500) {
+    @include kr-font(18px, 30px, $fc, $fw);
+  }
+  
+  @mixin font-title-2($fc: $font-color-title, $fw: 500) {
+    @include kr-font(16px, 24px, $fc, $fw);
+  }
+  
+  @mixin font-title-3($fc: $font-color-title, $fw: 500) {
+    @include kr-font(14px, 20px, $fc, $fw);
+  }
+  
+  @mixin font-content-1($fc: $font-color-title, $fw: 400) {
+    @include kr-font(14px, 20px, $fc, $fw);
+  }
+  
+  @mixin font-content-2($fc: $font-color-title, $fw: 400) {
+    @include kr-font(13px, 18px, $fc, $fw);
+  }
+  
+  @mixin font-content-3($fc: $font-color-title, $fw: 400) {
+    @include kr-font(12px, 16px, $fc, $fw);
+  }
+  
+  /* border
+  -------------------------- */
+  @mixin border-base($w: 1px, $type: solid, $color: $border-color-base) {
+    border: $w $type $color;
+  }
+  
+  /* Size
+  -------------------------- */
+  @mixin wh-base($width: inherit, $height: inherit) {
+    width: $width;
+    height: $height;
+  }
+  
+  /* box-shadow
+  -------------------------- */
+  @mixin shadow-base($t: 0, $r: 3px, $b: 12px, $l: 2px, $color: rgba(218,223,232,0.50)) {
+    box-shadow: $t $r $b $l $color;
+  }
+  
+  /* ellipsis
+  -------------------------- */
+  @mixin ellipsis-oneline($w: 100%) {
+    width: $w;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+  }
+  @mixin ellipsis-lines($w: 100%, $clamp: 2, $orient: vertical) {
+    width: $w;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $clamp;
+    -webkit-box-orient: $orient;
+    word-break: break-all;
+  }
+  
+  
+  /* chart 专属
+  -------------------------- */
+  @mixin wh($w, $h) {
+    width: $w;
+    height: $h;
+  }
+  
+  @mixin fc($font, $color) {
+    font-size: $font;
+    color: $color;
+  }
+  
+  @mixin setBorder($w, $color, $type: solid) {
+    border: $w $color $type;
+  }
+  
+  .relative{
+    position: relative;
+  }
+  
+  .ab{
+    position: absolute;
+  }
+  
+  @mixin clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  
+  @mixin scrollBar {
+    &::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
+  
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
+  }
+  
+  @mixin relative {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @mixin pct($pct) {
+    width: #{$pct};
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  @mixin triangle($width, $height, $color, $direction) {
+    $width: $width/2;
+    $color-border-style: $height solid $color;
+    $transparent-border-style: $width solid transparent;
+    height: 0;
+    width: 0;
+  
+    @if $direction==up {
+      border-bottom: $color-border-style;
+      border-left: $transparent-border-style;
+      border-right: $transparent-border-style;
+    }
+  
+    @else if $direction==right {
+      border-left: $color-border-style;
+      border-top: $transparent-border-style;
+      border-bottom: $transparent-border-style;
+    }
+  
+    @else if $direction==down {
+      border-top: $color-border-style;
+      border-left: $transparent-border-style;
+      border-right: $transparent-border-style;
+    }
+  
+    @else if $direction==left {
+      border-right: $color-border-style;
+      border-top: $transparent-border-style;
+      border-bottom: $transparent-border-style;
+    }
+  }
+  
+  
+  // 底部border
+  @mixin borderBottom {
+    border-bottom: 1px solid #E4E5EB; //因ui改版未开始，颜色先写死
+  }
+  
+  //icon
+  @mixin iconStyle{
+    padding: 6px;
+    color: #9799ac;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  //icon hover
+  @mixin iconHoverStyle{
+    background: rgba(0, 0, 0, 0.05);
+  }
+  
+  
+  @mixin hideScrollBar {
+    /* firefox */
+    scrollbar-width: none;
+  
+    /* IE10,IE11,IE12 隐藏滚动条 https://blog.csdn.net/zzzyyc/article/details/81872639 */
+    // /* stylelint-disable-next-line */
+    -ms-scroll-chaining: chained;
+    -ms-overflow-style: none;
+    -ms-content-zooming: zoom;
+    -ms-scroll-rails: none;
+    -ms-content-zoom-limit-min: 100%;
+    -ms-content-zoom-limit-max: 500%;
+    -ms-scroll-snap-type: proximity;
+    // /* stylelint-disable-next-line */
+    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+  
+    /* webkit内核 */
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+  
+  // @mixin sideMenuItem {
+  //   & .menu-item {
+  //     height: 36px;
+  //     line-height: 36px;
+  //     padding-left: 24px;
+  //     font-size: 0;
+  //     letter-spacing: 0;
+  //     color: $font-color-title;
+  //     white-space: nowrap;
+  //     font-size: 14px;
+  
+  //     cursor: pointer;
+  //     & .iconfont {
+  //       color: #9699AC;
+  //       font-size: 16px;
+  //     }
+  //     & .iconfont,
+  //     & .suffix,
+  //     & .menu-item-title {
+  //       vertical-align: middle;
+  //       user-select: none;
+  //     }
+  //     & .menu-item-title {
+  //       // font-size: 14px;
+  //       padding-left: 4px;
+  //     }
+  //     & .suffix {
+  //       font-style: normal;
+  //       font-size: 12px;
+  //       color: $font-color-grey;
+  //       position: relative;
+  //     }
+  //     &:hover,
+  //     &.active {
+  //       color: $color-primary;
+  //       background: $hover-bg-color;
+  //       & .iconfont {
+  //          color: $color-primary
+  //       }
+  //     }
+  //     &.active {
+  //       .menu-item-title{
+  //         font-weight: 600;
+  //       }
+  //       .suffix{
+  //         color: $color-primary
+  //       }
+  //     }
+  //   }
+  // }
+  
