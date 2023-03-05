@@ -178,6 +178,7 @@ const user = {
         if (target) {
           const jsonAmount = target.value[1];
           const withdrawable = await martinDepositContract.withdrawableAmount(state.address, jsonAmount);
+
           commit('UPDATE_STATE', {
             withdrawable,
             jsonAmount,

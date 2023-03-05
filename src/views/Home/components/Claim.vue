@@ -73,7 +73,7 @@ interest payment time：
         </div>
       </b-col>
     </b-row>
-    {{ user }}
+    <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
       <b-button
