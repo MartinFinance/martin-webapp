@@ -34,7 +34,7 @@ export default {
   // fundraisingToken: 'CER',
   // appDownload: '这是下载二维码',
 
-  DogeTokenAddress: '0x629b490cFA58cB53A5646d49B2fFFf1576b5c8aa',
-  MartinDepositAddress: '0xaEA64Ef71E83823A119E4b970291828510cD23ED',
+  DogeTokenAddress: '0xbb39B0C86BF117e3dd52BE8A51191353eda0cdf9',
+  MartinDepositAddress: '0x33eAc2b028e351111493b95f6dEe31E58291B865',
   USDTAddress: '0x629b490cFA58cB53A5646d49B2fFFf1576b5c8aa',
 };
