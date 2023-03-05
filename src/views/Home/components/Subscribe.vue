@@ -217,12 +217,13 @@ export default defineComponent({
 
       const dogeBalance = await dogeTokenContract.balanceOf(this.user.address);
 
-      // console.log(this.min)
+      console.log('dogeBalance', dogeBalance.toString());
+      console.log('amount', amount + '0'.repeat(this.user.dogeDecimals));
       // console.log(this.max)
       // console.log(amount)
       // console.log(dogeBalance)
       // console.log(amount * this.user.dogeDecimals ** 10)
-      if (dogeBalance.lt(amount * this.user.dogeDecimals ** 10)) {
+      if (dogeBalance.lt(amount + '0'.repeat(this.user.dogeDecimals))) {
         this.showError('You balance is not enough');
         this.submitting = false;
         return false;
