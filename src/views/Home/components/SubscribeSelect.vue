@@ -8,7 +8,7 @@
             <span>30 days</span>
           </div>
           <div class="select-middle">
-            APR：<em>10.00%+</em>
+            APR：<em>120.00%+</em>
           </div>
           <div class="select-bottom">
             Pay interest only when due

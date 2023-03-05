@@ -16,7 +16,7 @@ interest payment time：
           <div class="label">Product：</div>
           <div class="content">
             <span>Earning No. {{ type + 1 }}</span>
-            <span>APR: <em>{{ type === 0 ? '10.00%+' : '200.00%+'}}</em></span>
+            <span>APR: <em>{{ type === 0 ? '120.00%+' : '200.00%+'}}</em></span>
           </div>
         </div>
 
@@ -203,7 +203,6 @@ export default defineComponent({
       // const { tokenId } = this.$route.query;
       const { amount } = this;
 
-      console.log(this.refer)
       if (amount < this.min) {
         this.showError(`The minimum subscribe is ${this.min} DOGE`);
         return;
@@ -218,7 +217,12 @@ export default defineComponent({
 
       const dogeBalance = await dogeTokenContract.balanceOf(this.user.address);
 
-      if (dogeBalance.lt(amount)) {
+      // console.log(this.min)
+      // console.log(this.max)
+      // console.log(amount)
+      // console.log(dogeBalance)
+      // console.log(amount * this.user.dogeDecimals ** 10)
+      if (dogeBalance.lt(amount * this.user.dogeDecimals ** 10)) {
         this.showError('You balance is not enough');
         this.submitting = false;
         return false;

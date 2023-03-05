@@ -16,7 +16,7 @@ interest payment time：
           <div class="label">Product：</div>
           <div class="content">
             <span>Earning No.  {{ user.period === 0 ? 1 : 2 }}</span>
-            <span>APR: <em>{{ user.period === 0 ? '10.00%+' : '200.00%+'}}</em></span>
+            <span>APR: <em>{{ user.period === 0 ? '120.00%+' : '200.00%+'}}</em></span>
           </div>
         </div>
 
