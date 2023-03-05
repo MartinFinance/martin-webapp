@@ -58,15 +58,14 @@
 import { mapState } from 'vuex';
 import Pagination from '@/components/Pagination';
 
-import {
-  martinDepositInterface, provider,
-} from '@/eth/ethereum';
+// import {
+//   martinDepositInterface, provider,
+// } from '@/eth/ethereum';
 
 export default {
   components: {
     Pagination,
   },
-
 
   filters: {
     ellipsis(address) {

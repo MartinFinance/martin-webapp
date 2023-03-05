@@ -96,6 +96,8 @@
 
 <script>
 import { mapState } from 'vuex';
+import { BigNumber } from 'ethers';
+import config from '@/config';
 import Navbar from './components/Navbar.vue';
 import Footerbar from './components/Footerbar.vue';
 
@@ -142,15 +144,33 @@ export default {
       }
     }),
   },
-  created() {
+  async created() {
     if (window.ethereum) {
-      const { chainId } = window.ethereum;
+      // const { chainId } = window.ethereum;
 
-      if (!(chainId === '0x38' || chainId === '0x61')) {
-        this.showError(this.$t('selectNet'), {
-          noCloseButton: true,
-          autoHideDelay: 5000,
-        });
+      // if (!(chainId === '0x38' || chainId === '0x61')) {
+      //   this.showError(this.$t('selectNet'), {
+      //     noCloseButton: true,
+      //     autoHideDelay: 5000,
+      //   });
+      // }
+
+      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+
+      if (!BigNumber.from(chainId).eq(0x38) && !BigNumber.from(chainId).eq(0x61)) {
+        try {
+          window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{
+              chainId: config.chainId,
+            }],
+          });
+        } catch (switchError) {
+          this.showError(this.$t('selectNet'), {
+            noCloseButton: true,
+            autoHideDelay: 5000,
+          });
+        }
       }
     }
   },

@@ -23,6 +23,8 @@ export default {
 
   addressZero: '0x0000000000000000000000000000000000000000',
   hashZero: '0x0000000000000000000000000000000000000000000000000000000000000000',
+
+  defaultInviter: '0x74cfa61e62232a4691c7cb2F108f2EFE54117fD5',
   // 本地测试节点
   // defaultServer: 'https://api-sandbox.i.ddex.io',
   // webSocketServer: 'https://ws-sandbox.i.ddex.io',
@@ -36,5 +38,5 @@ export default {
 
   DogeTokenAddress: '0xbb39B0C86BF117e3dd52BE8A51191353eda0cdf9',
   MartinDepositAddress: '0x33eAc2b028e351111493b95f6dEe31E58291B865',
-  USDTAddress: '0x629b490cFA58cB53A5646d49B2fFFf1576b5c8aa',
+  USDTAddress: '0x33eAc2b028e351111493b95f6dEe31E58291B865',
 };

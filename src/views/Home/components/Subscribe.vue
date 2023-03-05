@@ -36,6 +36,15 @@ interest payment time：
             </div>
           </div>
         </div>
+        <!--
+        <div class="content-row row-amount">
+          <div class="label">Inviter：</div>
+          <div class="content">
+            <div class="content-left">
+              <input type="text" v-model="amount" @input="onInput">
+            </div>
+          </div>
+        </div> -->
 
         <div class="content-row row-range" >
           <div class="label">Operating range：</div>
@@ -84,7 +93,7 @@ interest payment time：
         </div>
       </b-col>
     </b-row>
-    {{ user }}
+    <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
       <b-button
@@ -123,7 +132,7 @@ export default defineComponent({
   data() {
     const { refer } = this.$route.query;
     return {
-      invitee: refer || config.addressZero,
+      invitee: refer || config.defaultInviter,
       submitting: false,
       amount: 0,
     };
@@ -221,7 +230,6 @@ export default defineComponent({
           config.MartinDepositAddress,
         );
 
-        // console.log(dogeTokenInterface)
         if (allowance.lt(amount)) {
           const approveTxHash = await sendTransaction({
             to: config.DogeTokenAddress,
@@ -242,8 +250,6 @@ export default defineComponent({
         }
 
         let usdtAmount = this.amount * this.user.dogePrice;
-        console.log(usdtAmount)
-        console.log(this.user.dogePrice)
 
         const min = this.user.min - this.user.depositAmount;
         const max = this.user.max - this.user.depositAmount;
