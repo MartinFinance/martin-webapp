@@ -3,8 +3,6 @@ import { provider } from "@/eth/ethereum";
 
 import { BigNumber } from 'ethers';
 
-console.log(BigNumber)
-// console.log(provider)
 const sendTransaction = async ({
   to,
   data,
@@ -15,7 +13,7 @@ const sendTransaction = async ({
 
   const transactionParameters = {
     // nonce: txCount, // ignored by MetaMask
-    gasPrice:  gasPrice.toHexString(), // customizable by user during MetaMask confirmation.
+    gasPrice: gasPrice.toHexString(), // customizable by user during MetaMask confirmation.
     gas: BigNumber.from(gas || 240000).toHexString(), // customizable by user during MetaMask confirmation.
     to, // Required except during contract publications.
     from: ethereum.selectedAddress, // must match user's active address.
