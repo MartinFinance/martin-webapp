@@ -32,7 +32,7 @@ interest payment time：
             <div class="content-right">
               <span class="max-btn" @click="amount = max">MAX</span>
               <span><img src="@/assets/img/small-logo@2x.png" alt=""></span>
-              <span class="unit">DOGE</span>
+              <!-- <span class="unit">DOGE</span> -->
             </div>
           </div>
         </div>
@@ -437,7 +437,7 @@ export default defineComponent({
 
     & img {
       width: 24px;
-      margin-right: 10px;
+      // margin-right: 10px;
     }
 
     & .unit {

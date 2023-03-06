@@ -13,7 +13,7 @@ interest payment time：
     <b-row align-v="start">
       <b-col  class="left-section" lg="6">
         <div class="content-row row-product">
-          <div class="label">Product：</div>
+          <div class="label label-short">Product：</div>
           <div class="content">
             <span>Earning No.  {{ user.period === 0 ? 1 : 2 }}</span>
             <span>APR: <em>{{ user.period === 0 ? '120.00%+' : '200.00%+'}}</em></span>
@@ -21,7 +21,7 @@ interest payment time：
         </div>
 
         <div class="content-row row-amount">
-          <div class="label">Amount：</div>
+          <div class="label label-short">Amount：</div>
           <div class="content">
             <div class="content-left">
               <label for="">Claimable: </label>
@@ -32,7 +32,7 @@ interest payment time：
             <div class="content-right">
               <span class="max-btn" @click="amount = max">MAX</span>
               <span><img src="@/assets/img/small-logo@2x.png" alt=""></span>
-              <span class="unit">DOGE</span>
+              <!-- <span class="unit">DOGE</span> -->
             </div>
           </div>
         </div>
@@ -293,6 +293,7 @@ export default defineComponent({
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+
   .label {
     flex-shrink: 0;
     width: 160px;
@@ -300,6 +301,10 @@ export default defineComponent({
     font-size: 16px;
     color: #666666;
     line-height: 16px;
+  }
+
+  .label-short {
+    width: 120px;
   }
 
   .content {
@@ -381,7 +386,7 @@ export default defineComponent({
 
     & img {
       width: 24px;
-      margin-right: 10px;
+      // margin-right: 10px;
     }
 
     & .unit {
