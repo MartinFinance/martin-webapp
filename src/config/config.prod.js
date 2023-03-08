@@ -13,15 +13,14 @@ export default {
   // minAllowance: 10 ** 30,
   // appId: '1234567',
 
-  // gethServer: 'https://mainnet.infura.io/v3/6ef437a0bfc743d0bbfe73f72c90afd4', 主网
-  // chainId: 1,
   browser: 'https://testnet.bscscan.com',
-
   gethServer: 'https://data-seed-prebsc-1-s1.binance.org:8545',
   chainId: 97,
 
   addressZero: '0x0000000000000000000000000000000000000000',
   hashZero: '0x0000000000000000000000000000000000000000000000000000000000000000',
+
+  defaultInviter: '0x74cfa61e62232a4691c7cb2F108f2EFE54117fD5',
   // 本地测试节点
   // defaultServer: 'https://api-sandbox.i.ddex.io',
   // webSocketServer: 'https://ws-sandbox.i.ddex.io',

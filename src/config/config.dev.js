@@ -13,10 +13,6 @@ export default {
   // minAllowance: 10 ** 30,
   // appId: '1234567',
 
-  // gethServer: 'https://mainnet.infura.io/v3/6ef437a0bfc743d0bbfe73f72c90afd4', 主网
-  // chainId: 1,
-  // gethServer: 'https://mainnet.infura.io/v3/6ef437a0bfc743d0bbfe73f72c90afd4', 主网
-  // chainId: 1,
   browser: 'https://testnet.bscscan.com',
   gethServer: 'https://data-seed-prebsc-1-s1.binance.org:8545',
   chainId: 97,
