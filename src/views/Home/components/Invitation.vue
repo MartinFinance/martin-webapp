@@ -121,6 +121,7 @@
 <script>
 import { mapState } from 'vuex';
 import ClipboardJS from 'clipboard';
+import config from '@/config';
 
 export default {
   components: {
@@ -151,7 +152,7 @@ export default {
   computed: {
     ...mapState(['user']),
     link() {
-      return `https://account${this.user.address}`;
+      return `${config.webUrl}?refer=${this.user.address}`;
     },
   },
 
