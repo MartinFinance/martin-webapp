@@ -18,7 +18,8 @@
           <span> {{ user.period === 0 ? '120.00%+' : '200.00%+' }}</span>
         </div>
         <div  class="card-bottom">
-          <span>Pay interest only when due</span>
+          <span>{{ user.period === 0 ? 'Pay interest only when due' : 'Receive interest the next day' }}</span>
+
         </div>
 
       </div>

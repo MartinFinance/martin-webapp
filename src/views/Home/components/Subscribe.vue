@@ -24,15 +24,15 @@ interest payment time：
           <div class="label">Amount：</div>
           <div class="content">
             <div class="content-left">
-              <label for="">Balance: </label>
-              <input type="number" v-model.number="amount" @input="onInput">
+              <!-- <label for="">Balance: </label> -->
+              <input :placeholder="`Balance: ${dogeAmount}`" type="number" v-model.number="amount" @input="onInput">
               <!-- <span>DOGE</span> -->
             </div>
 
             <div class="content-right">
               <span class="max-btn" @click="amount = max">MAX</span>
-              <span><img src="@/assets/img/small-logo@2x.png" alt=""></span>
-              <!-- <span class="unit">DOGE</span> -->
+              <img src="@/assets/img/small-logo@2x.png" alt="">
+              <span class="unit">DOGE</span>
             </div>
           </div>
         </div>
@@ -96,8 +96,6 @@ interest payment time：
     <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
-      {{ approved }}
-
         <b-button
           v-if="!approved"
             class="subscribe-btn"
@@ -142,7 +140,6 @@ export default defineComponent({
   },
   data() {
     const { refer } = this.$route.query;
-    console.log(refer)
     return {
       invitee: refer || config.defaultInviter,
       submitting: false,
@@ -156,6 +153,10 @@ export default defineComponent({
   },
   computed: {
     ...mapState(['user']),
+    dogeAmount() {
+      const total = Math.floor(this.user.dogeBalance / 10 ** this.user.dogeDecimals);
+      return total;
+    },
     min() {
       if (this.user.positionOpened) {
         const min = Math.ceil((this.user.min - this.user.depositAmount) / this.user.dogePrice);
@@ -206,6 +207,7 @@ export default defineComponent({
     },
   },
 
+
   methods: {
     onInput(event) {
       let { value } = event.target;
@@ -249,7 +251,6 @@ export default defineComponent({
     },
 
     async onBuy() {
-      // const { tokenId } = this.$route.query;
       const { amount } = this;
 
       if (amount < this.min) {
@@ -266,12 +267,6 @@ export default defineComponent({
 
       const dogeBalance = await dogeTokenContract.balanceOf(this.user.address);
 
-      // console.log('dogeBalance', dogeBalance.toString());
-      // console.log('amount', amount + '0'.repeat(this.user.dogeDecimals));
-      // console.log(this.max)
-      // console.log(amount)
-      // console.log(dogeBalance)
-      // console.log(amount * this.user.dogeDecimals ** 10)
       if (dogeBalance.lt(amount + '0'.repeat(this.user.dogeDecimals))) {
         this.showError('You balance is not enough');
         this.submitting = false;
@@ -279,28 +274,28 @@ export default defineComponent({
       }
 
       try {
-        const allowance = await dogeTokenContract.allowance(
-          this.user.address,
-          config.MartinDepositAddress,
-        );
+        // const allowance = await dogeTokenContract.allowance(
+        //   this.user.address,
+        //   config.MartinDepositAddress,
+        // );
 
-        if (allowance.lt(amount)) {
-          const approveTxHash = await sendTransaction({
-            to: config.DogeTokenAddress,
-            data: dogeTokenInterface.encodeFunctionData('approve', [
-              config.MartinDepositAddress,
-              BigNumber.from('9'.repeat(32)).toHexString(),
-            ]),
-          });
+        // if (allowance.lt(amount)) {
+        //   const approveTxHash = await sendTransaction({
+        //     to: config.DogeTokenAddress,
+        //     data: dogeTokenInterface.encodeFunctionData('approve', [
+        //       config.MartinDepositAddress,
+        //       BigNumber.from('9'.repeat(32)).toHexString(),
+        //     ]),
+        //   });
 
-          const approveTx = await provider.waitForTransaction(approveTxHash);
+        //   const approveTx = await provider.waitForTransaction(approveTxHash);
 
-          if (approveTx.status !== 1) {
-            this.showError('Approve fail，please retry');
-            this.submitting = false;
-            return;
-          }
-        }
+        //   if (approveTx.status !== 1) {
+        //     this.showError('Approve fail，please retry');
+        //     this.submitting = false;
+        //     return;
+        //   }
+        // }
 
         let usdtAmount = this.amount * this.user.dogePrice;
 
@@ -316,7 +311,6 @@ export default defineComponent({
         }
         let buyTxHash;
 
-        console.log(this.invitee);
         if (!this.user.positionOpened) {
           buyTxHash = await sendTransaction({
             to: config.MartinDepositAddress,
@@ -442,8 +436,8 @@ export default defineComponent({
       color: #666666 ;
       font-size: 18px;
       align-items: center;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 12px;
+      padding-right: 12px;
     }
 
     & .content-left {
@@ -486,7 +480,7 @@ export default defineComponent({
 
     & img {
       width: 24px;
-      // margin-right: 10px;
+      margin-right: 10px;
     }
 
     & .unit {

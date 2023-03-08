@@ -16,7 +16,13 @@ interest payment time：
           <div class="label label-short">Product：</div>
           <div class="content">
             <span>Earning No.  {{ user.period === 0 ? 1 : 2 }}</span>
-            <span>APR: <em>{{ user.period === 0 ? '120.00%+' : '200.00%+'}}</em></span>
+          </div>
+        </div>
+
+        <div class="content-row row-product">
+          <div class="label label-short">APR: </div>
+          <div class="content">
+            <span><em>{{ user.period === 0 ? '120.00%+' : '200.00%+'}}</em></span>
           </div>
         </div>
 
@@ -24,15 +30,15 @@ interest payment time：
           <div class="label label-short">Amount：</div>
           <div class="content">
             <div class="content-left">
-              <label for="">Claimable: </label>
-              <input type="number"  v-model.number="amount" @input="onInput">
+              <!-- <label for="">Claimable: </label> -->
+              <input :placeholder="`Claimable:${claimable}`" type="number"  v-model.number="amount" @input="onInput">
               <!-- <span>DOGE</span> -->
             </div>
 
             <div class="content-right">
               <span class="max-btn" @click="amount = max">MAX</span>
-              <span><img src="@/assets/img/small-logo@2x.png" alt=""></span>
-              <!-- <span class="unit">DOGE</span> -->
+             <img src="@/assets/img/small-logo@2x.png" alt="">
+              <span class="unit">DOGE</span>
             </div>
           </div>
         </div>
@@ -43,7 +49,7 @@ interest payment time：
           <div class="label">Interest payment：</div>
           <div class="content">
             <div>
-              Pay interest only when due
+              <span>{{ user.period === 0 ? 'Pay interest only when due' : 'Receive interest the next day' }}</span>
               <br>
               Early redemption without interest
             </div>
@@ -117,16 +123,17 @@ export default defineComponent({
     return {
       invitee: config.addressZero,
       submitting: false,
-      amount: 0,
+      amount: '',
     };
   },
-  watch: {
-    claimable() {
-      this.amount = this.claimable;
-    },
-  },
+  // watch: {
+  //   claimable() {
+  //     this.amount = this.claimable;
+  //   },
+  // },
   computed: {
     ...mapState(['user']),
+
 
     time() {
       if (this.user.events.length > 0) {
@@ -342,8 +349,8 @@ export default defineComponent({
       color: #666666 ;
       font-size: 18px;
       align-items: center;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 12px;
+      padding-right: 12px;
     }
 
     & .content-left {
@@ -386,7 +393,7 @@ export default defineComponent({
 
     & img {
       width: 24px;
-      // margin-right: 10px;
+      margin-right: 10px;
     }
 
     & .unit {

@@ -129,7 +129,7 @@ export default {
 
         // 使用 window.scrollTo 滚动到目标位置
         window.scrollTo({
-          top: targetPosition,
+          top: targetPosition + 50,
           behavior: 'smooth',
         });
 
@@ -240,6 +240,12 @@ export default {
     font-weight: bold;
     font-family: ArialRoundedMTBold;
     font-size: 16px;
+    margin-right: 16px;
+    line-height: 14px;
+    padding: 0;
+    &:hover {
+      border-bottom: 4px solid #FFB600;
+    }
   }
 }
 
@@ -287,7 +293,9 @@ export default {
 
 @media (max-width: 992px) {
   .logo {
+    height: 32px;
     margin-right: 0;
+
   }
   .navbar-nav {
     .nav-item {

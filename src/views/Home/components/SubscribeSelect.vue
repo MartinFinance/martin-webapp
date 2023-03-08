@@ -25,7 +25,7 @@
             APR：<em>200.00%+</em>
           </div>
           <div class="select-bottom">
-            Pay interest only when due
+            Receive interest the next day
           </div>
         </div>
       </b-col>
