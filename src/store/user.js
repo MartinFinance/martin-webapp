@@ -63,6 +63,10 @@ const user = {
           loaded: true,
         });
       } else if (accounts[0] !== state.address) {
+        if (state.address) {
+          window.location.reload();
+        }
+        console.log('handleAccountsChanged', accounts[0], state.address);
         commit('UPDATE_STATE', {
           address: accounts[0],
           chainId,
@@ -192,6 +196,7 @@ const user = {
       if (state.address) {
         const invitees = await martinDepositContract.getMyInvitees(state.address);
 
+        console.log(invitees);
         commit('UPDATE_STATE', {
           invitees,
         });

@@ -152,7 +152,7 @@ export default {
   computed: {
     ...mapState(['user']),
     link() {
-      return `${config.webUrl}?refer=${this.user.address}`;
+      return `${config.webUrl}/#/?refer=${this.user.address}`;
     },
   },
 

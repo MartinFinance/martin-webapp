@@ -29,7 +29,7 @@
                     <tr class="table-row" v-for="item in subscriptionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
                       <td>Earning No. {{ user.period === 0 ? 1 : 2 }}</td>
-                      <td>{{ Math.round(item.changedAmount  / user.dogePrice) }}</td>
+                      <td>{{ Math.round(item.changedAmount / 10 ** user.usdDecimals) }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >
@@ -53,7 +53,7 @@
                     <tr class="table-row" v-for="item in redemptionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
                       <td>Earning No. {{ user.period === 0 ? 1 : 2 }}</td>
-                      <td>{{ Math.round(item.changedAmount / user.dogePrice) }}</td>
+                      <td>{{ Math.round(item.changedAmount / 10 ** user.usdDecimals) }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >
@@ -77,7 +77,7 @@
                     <tr class="table-row" v-for="item in commissionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
                       <td>Earning No. {{ user.period === 0 ? 1 : 2 }}</td>
-                      <td>{{ Math.round(item.changedAmount / user.dogePrice) }}</td>
+                      <td>{{ Math.round(item.changedAmount / 10 ** user.usdDecimals) }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >

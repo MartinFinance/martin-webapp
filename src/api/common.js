@@ -15,14 +15,6 @@ export function login(params) {
  * @param {*}
  */
 export function getUser() {
-  // return {
-  //   success: true,
-  //   data: {
-  //     account: 'allen',
-  //     id: '123',
-  //     // resources: [],
-  //   },
-  // };
   return axios({
     url: '/account/userinfo',
     method: 'GET',

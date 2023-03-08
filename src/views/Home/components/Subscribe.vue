@@ -96,7 +96,18 @@ interest payment time：
     <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
-      <b-button
+      {{ approved }}
+
+        <b-button
+          v-if="!approved"
+            class="subscribe-btn"
+            variant="primary"
+            @click="onApprove"
+            :disabled="submitting"
+        >Approve</b-button>
+
+        <b-button
+          v-else
             class="subscribe-btn"
             variant="primary"
             @click="onBuy"
@@ -131,11 +142,17 @@ export default defineComponent({
   },
   data() {
     const { refer } = this.$route.query;
+    console.log(refer)
     return {
       invitee: refer || config.defaultInviter,
       submitting: false,
       amount: 0,
+      approved: false,
     };
+  },
+
+  mounted() {
+    this.getAllowance();
   },
   computed: {
     ...mapState(['user']),
@@ -199,6 +216,38 @@ export default defineComponent({
       }
     },
 
+    async getAllowance() {
+      const allowance = await dogeTokenContract.allowance(
+        this.user.address,
+        config.MartinDepositAddress,
+      );
+      // console.log(allowance)
+      this.approved = allowance.gt(100);
+    },
+
+    async onApprove() {
+      const approveTxHash = await sendTransaction({
+        to: config.DogeTokenAddress,
+        data: dogeTokenInterface.encodeFunctionData('approve', [
+          config.MartinDepositAddress,
+          BigNumber.from('9'.repeat(32)).toHexString(),
+        ]),
+      });
+
+      const approveTx = await provider.waitForTransaction(approveTxHash);
+
+      if (approveTx.status !== 1) {
+        this.showError('Approve fail，please retry');
+        this.submitting = false;
+      } else {
+        // this.showSuccess('Approve success');
+        this.showSuccess('Success', {
+          tx: approveTxHash,
+        });
+        this.approved = true;
+      }
+    },
+
     async onBuy() {
       // const { tokenId } = this.$route.query;
       const { amount } = this;
@@ -217,8 +266,8 @@ export default defineComponent({
 
       const dogeBalance = await dogeTokenContract.balanceOf(this.user.address);
 
-      console.log('dogeBalance', dogeBalance.toString());
-      console.log('amount', amount + '0'.repeat(this.user.dogeDecimals));
+      // console.log('dogeBalance', dogeBalance.toString());
+      // console.log('amount', amount + '0'.repeat(this.user.dogeDecimals));
       // console.log(this.max)
       // console.log(amount)
       // console.log(dogeBalance)
@@ -251,7 +300,6 @@ export default defineComponent({
             this.submitting = false;
             return;
           }
-          console.log(approveTx);
         }
 
         let usdtAmount = this.amount * this.user.dogePrice;
@@ -268,6 +316,7 @@ export default defineComponent({
         }
         let buyTxHash;
 
+        console.log(this.invitee);
         if (!this.user.positionOpened) {
           buyTxHash = await sendTransaction({
             to: config.MartinDepositAddress,

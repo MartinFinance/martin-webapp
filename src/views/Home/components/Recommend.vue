@@ -37,7 +37,7 @@
               </tr>
             </template>
             <tr v-else class="table-row empty-row" >
-                <td colspan="3">No Data</td>
+                <td colspan="4">No Data</td>
               </tr>
           </tbody>
         </table>
