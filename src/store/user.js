@@ -189,11 +189,13 @@ const user = {
     },
 
     async getInvitees({ state, commit }) {
-      const invitees = await martinDepositContract.getMyInvitees(state.address);
+      if (state.address) {
+        const invitees = await martinDepositContract.getMyInvitees(state.address);
 
-      commit('UPDATE_STATE', {
-        invitees,
-      });
+        commit('UPDATE_STATE', {
+          invitees,
+        });
+      }
     },
   },
 };

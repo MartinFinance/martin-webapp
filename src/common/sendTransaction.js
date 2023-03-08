@@ -16,15 +16,16 @@ const sendTransaction = async ({
     gasPrice: gasPrice.toHexString(), // customizable by user during MetaMask confirmation.
     gas: BigNumber.from(gas || 240000).toHexString(), // customizable by user during MetaMask confirmation.
     to, // Required except during contract publications.
-    from: ethereum.selectedAddress, // must match user's active address.
+    from: window.ethereum.selectedAddress, // must match user's active address.
     value: '0x00', // Only required to send ether to the recipient from the initiating external account.
     data, // Optional, but used for defining smart contract creation and interaction.
     chainId: config.chainId, // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
   };
 
+  console.log(JSON.stringify(transactionParameters));
   // txHash is a hex string
   // As with any RPC call, it may throw an error
-  const txHash = await ethereum.request({
+  const txHash = await window.ethereum.request({
     method: 'eth_sendTransaction',
     params: [transactionParameters],
   });
