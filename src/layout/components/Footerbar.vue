@@ -10,9 +10,9 @@
 
         <b-col cols="12" lg="6" class="social-wrapper">
           <!-- <img class="logo" src="@/assets/img/logo@2x.png" alt=""> -->
-          <img class="social-icon" src="@/assets/img/icon-twitter@2x.png" alt="">
-          <img class="social-icon" src="@/assets/img/icon-discord@2x.png" alt="">
-          <img class="social-icon" src="@/assets/img/icon-tele@2x.png" alt="">
+          <div  class="social-icon"></div>
+          <div  class="social-icon"></div>
+          <div  class="social-icon"></div>
         </b-col>
       </b-row>
     </b-container>
@@ -82,6 +82,30 @@ export default {
 
   .social-icon {
     width: 48px;
+    height: 48px;
+    background: url(~@/assets/img/icon-twitter@2x.png) center center / 100% auto no-repeat;
+    display: inline-block;
+    cursor: pointer;
+    &:nth-child(1) {
+      background-image: url(~@/assets/img/icon-twitter@2x.png);
+      &:hover {
+        background-image: url(~@/assets/img/icon-twitter-a@2x.png);
+      }
+    }
+    &:nth-child(2) {
+      background-image: url(~@/assets/img/icon-discord@2x.png);
+      &:hover {
+        background-image: url(~@/assets/img/icon-discord-a@2x.png);
+      }
+
+    }
+    &:nth-child(3) {
+      background-image: url(~@/assets/img/icon-tele@2x.png);
+      &:hover {
+        background-image: url(~@/assets/img/icon-tele-a@2x.png);
+      }
+    }
+
     & + .social-icon {
       margin-left: 60px;
     }

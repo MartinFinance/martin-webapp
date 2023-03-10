@@ -79,11 +79,6 @@
   .banner {
     background: url(~@/assets/img/small-banner@2x.png) center center / auto 100% no-repeat;
   }
-  // .bg {
-  //   & img {
-  //     right: -800px
-  //   }
-  // }
 
   .left-content {
     & h3 {

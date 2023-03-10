@@ -1,11 +1,11 @@
 <template>
-  <div class="marshmallow" id="Investment">
+  <div class="earn" id="Earn">
       <div class="logo-wrapper">
         <img src="@/assets/img/top-dog@2x.png" alt="">
       </div>
      <b-container fluid="lg" >
-      <h2>Marshmallow</h2>
-      <div class="marshmallow-wrapper">
+      <h2>Earn</h2>
+      <div class="earn-wrapper">
         <div
           class="slider-view"
           :class="{
@@ -127,7 +127,7 @@ export default {
 </script>
 
   <style lang="scss" scoped>
-  .marshmallow {
+  .earn {
     margin-top: -40px;
     padding-top: 150px;
     padding-bottom: 150px;
@@ -156,7 +156,7 @@ export default {
 
   }
 
-  .marshmallow-wrapper {
+  .earn-wrapper {
     width: 100%;
     overflow: hidden;
     overflow: hidden;
@@ -225,7 +225,7 @@ export default {
   }
 
   @media (max-width: 1200px) {
-    .marshmallow-container {
+    .earn-container {
       .invite-pic {
           margin: 0;
           img {
@@ -237,7 +237,7 @@ export default {
   }
 
   @media (max-width: 992px) {
-    .marshmallow {
+    .earn {
       padding-top: 60px;
       padding-bottom: 50px;
     }
@@ -284,7 +284,7 @@ export default {
       }
     }
 
-    .marshmallow-container {
+    .earn-container {
         padding-left: 16px;
         padding-right: 16px;
       .left {

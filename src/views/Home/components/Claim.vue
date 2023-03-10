@@ -15,7 +15,8 @@ interest payment time：
         <div class="content-row row-product">
           <div class="label label-short">Product：</div>
           <div class="content">
-            <span>Earning No.  {{ user.period === 0 ? 1 : 2 }}</span>
+            <span>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</span>
+
           </div>
         </div>
 
@@ -30,16 +31,21 @@ interest payment time：
           <div class="label label-short">Amount：</div>
           <div class="content">
             <div class="content-left">
-              <!-- <label for="">Claimable: </label> -->
-              <input :placeholder="`Claimable:${claimable}`" type="number"  v-model.number="amount" @input="onInput">
+              <input :placeholder="`Available:${claimable}`" type="number"  v-model.number="amount" @input="onInput">
               <!-- <span>DOGE</span> -->
             </div>
 
             <div class="content-right">
-              <span class="max-btn" @click="amount = max">MAX</span>
+            <span class="max-btn" @click="amount = max">MAX</span>
              <img src="@/assets/img/small-logo@2x.png" alt="">
               <span class="unit">DOGE</span>
             </div>
+          </div>
+        </div>
+
+        <div class="content-row row-tip">
+          <div class="content">
+            = {{ (amount * user.dogePrice / 10 ** user.dogePriceDecimals) | toFixed(2) }} $
           </div>
         </div>
       </b-col>
@@ -51,7 +57,7 @@ interest payment time：
             <div>
               <span>{{ user.period === 0 ? 'Pay interest only when due' : 'Receive interest the next day' }}</span>
               <br>
-              Early redemption without interest
+              No interest for redemption before maturity
             </div>
           </div>
         </div>
@@ -66,12 +72,12 @@ interest payment time：
               </div>
               <span class="line"></span>
               <div class="timeline-item">
-                <div class="discribe">Value date</div>
+                <div class="discribe">Accrual Start Date</div>
                 <div class="time">{{valueDate}} 08:00:00</div>
               </div>
               <span class="line"></span>
               <div class="timeline-item">
-                <div class="discribe">Interest payment time</div>
+                <div class="discribe">First Distribution Date</div>
                 <div class="time">{{interestDate}} 08:00:00</div>
               </div>
             </div>
@@ -82,12 +88,21 @@ interest payment time：
     <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
+      <div class="tip">Tips:0.5% handling fee will be deducted for redemption, and 10% of the funds will be automatically reinvested</div>
       <b-button
             class="subscribe-btn"
             variant="primary"
             @click="onBuy"
-            :disabled="submitting"
-        >Claim</b-button>
+            :disabled="submitting || user.withdrawable === 0 || !amount"
+        >
+        Redeem
+        <b-icon
+          v-if="submitting"
+          icon="arrow-repeat"
+          rotate="45"
+          animation="spin"
+        ></b-icon>
+      </b-button>
           <b-button
             class="cancel-btn"
             @click="onCancel"
@@ -126,14 +141,9 @@ export default defineComponent({
       amount: '',
     };
   },
-  // watch: {
-  //   claimable() {
-  //     this.amount = this.claimable;
-  //   },
-  // },
+
   computed: {
     ...mapState(['user']),
-
 
     time() {
       if (this.user.events.length > 0) {
@@ -249,7 +259,10 @@ export default defineComponent({
           this.showSuccess('Succeeded', {
             tx: buyTxHash,
           });
+          this.amount = '';
+
           this.$store.dispatch('getPosition');
+          this.$store.dispatch('getWithdrawable');
           this.$store.dispatch('getBalances');
         } else {
           this.showError('Failed', {
@@ -402,29 +415,15 @@ export default defineComponent({
     }
   }
 
- .row-range {
+  .row-tip {
+    margin-top: -12px;
+    color: #666666;
+    font-size: 14px;
     .content {
-      // font-size: 18px;
-      font-size: 16px;
-      display: inline-flex;
-      justify-content: space-between;
+      margin-left: 120px;
     }
   }
 
- .row-interest {
-  .content {
-    display: inline-flex;
-      justify-content: space-between;
-  }
-    & em {
-      font-size: 24px;
-    }
-  }
-  .row-operating {
-    .content {
-      color: #000
-    }
-  }
 
  .cancel-btn,
 .subscribe-btn {

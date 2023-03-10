@@ -1,13 +1,13 @@
 <template>
   <div class="invitation" id="InvitationRebate">
      <b-container fluid="lg" >
-      <h2>Invitation & Reward</h2>
+      <h2>Referral & Rebate</h2>
       <div class="sub-title">Invite friends, earn more income, and qualify for global dividends</div>
 
       <div class="rules-container">
         <div class="rules-title">
-          Income distribution rules:
-          <em>(can be collected regularly in each cycle)</em>
+          Rebate Rules:
+          <em>(Rebates can be claimed regularly)</em>
         </div>
 
         <div class="rules-list">
@@ -46,14 +46,14 @@
         <b-col class="left" lg="6" order="1" order-md="1">
           <div class="invite-card">
             <div class="invite-head">
-              <span :class="{ active: active === 1}" @click="changeInviteCard(1)">Invite</span>
+              <span :class="{ active: active === 1}" @click="changeInviteCard(1)">Invite Friends</span>
               <!-- <span :class="{ active: active === 2}" @click="changeInviteCard(2)">Reward</span> -->
             </div>
 
             <div v-show="active === 1">
               <template v-if="user.positionOpened">
                 <div class="invite-body">
-                  <span>Recommended link</span>
+                  <span>Referral link</span>
                   <span>
                     {{(link) | ellipsis}}
                     <img src="@/assets/img/copy@2x.png" class="copy-btn" alt="">
@@ -103,7 +103,7 @@
               <b-button
                 class="claim-btn"
                 variant="primary">
-                Claim
+                Redeem
               </b-button>
             </div>
           </div>
@@ -162,7 +162,7 @@ export default {
     });
 
     clipboard.on('success', (e) => {
-      this.showSuccess('Copy Successfully', {
+      this.showSuccess('Copied', {
         title: 'Notice',
         autoHideDelay: 5000,
       });

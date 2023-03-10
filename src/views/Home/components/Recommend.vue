@@ -1,7 +1,7 @@
 <template>
 <div class="recommend">
    <b-container fluid="lg" >
-    <h2>Recommend</h2>
+    <h2>My Referrals</h2>
 
     <b-row class="recommend-container" align-h="between">
       <b-col class="left" md="4" order="2" order-md="1">
@@ -21,10 +21,10 @@
         <table>
           <thead class="table-head">
             <tr>
-              <th>Invitee's address</th>
+              <th>Referee's address</th>
               <th>Level</th>
-              <th>Superior address</th>
-              <th>Deta</th>
+              <th>Inviter's address</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>

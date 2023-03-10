@@ -12,7 +12,7 @@
             <div class="invite-head">
               <span :class="{ active: active === 1}" @click="changeInviteCard(1)">Subscription</span>
               <span :class="{ active: active === 2}" @click="changeInviteCard(2)">Redemption</span>
-              <span :class="{ active: active === 3}" @click="changeInviteCard(3)">Commission return</span>
+              <span :class="{ active: active === 3}" @click="changeInviteCard(3)">Rebate</span>
             </div>
 
             <template v-if="active === 1">
@@ -28,7 +28,7 @@
                   <template v-if="subscriptionList.length">
                     <tr class="table-row" v-for="item in subscriptionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
-                      <td>Earning No. {{ user.period === 0 ? 1 : 2 }}</td>
+                      <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
                       <td>{{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>
@@ -52,7 +52,7 @@
                   <template v-if="redemptionList.length">
                     <tr class="table-row" v-for="item in redemptionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
-                      <td>Earning No. {{ user.period === 0 ? 1 : 2 }}</td>
+                      <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
                       <td>{{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>
@@ -76,7 +76,7 @@
                   <template v-if="commissionList.length">
                     <tr class="table-row" v-for="item in commissionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
-                      <td>Earning No. {{ user.period === 0 ? 1 : 2 }}</td>
+                      <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
                       <td>{{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>

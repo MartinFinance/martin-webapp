@@ -16,6 +16,7 @@ const user = {
     // usdtBalance: 0,
     dogeBalance: 0,
     dogePrice: 0,
+    dogePriceDecimals: 0,
 
     depositAmount: 0,
     period: 0,
@@ -116,7 +117,7 @@ const user = {
     async getDogePrice({ commit }) {
       const [price, decimal] = await martinDepositContract.getLatestPrice();
       commit('UPDATE_STATE', {
-        // dogePrice: price / 10 ** decimal,
+        dogePriceDecimals: decimal,
         dogePrice: price,
       });
     },

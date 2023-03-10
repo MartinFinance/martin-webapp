@@ -6,4 +6,4 @@ Vue.filter('formatTime', (time, formatter) => {
     return '';
   }
   return moment(time).format(formatter);
-})
+});

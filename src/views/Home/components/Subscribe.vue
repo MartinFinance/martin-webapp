@@ -15,7 +15,7 @@ interest payment time：
         <div class="content-row row-product">
           <div class="label">Product：</div>
           <div class="content">
-            <span>Earning No. {{ type + 1 }}</span>
+            <span>{{ type === 0 ? 'Regular Interest' : 'Daily Interest'}}</span>
             <span>APR: <em>{{ type === 0 ? '120.00%+' : '200.00%+'}}</em></span>
           </div>
         </div>
@@ -36,6 +36,13 @@ interest payment time：
             </div>
           </div>
         </div>
+
+        <div class="content-row row-tip">
+          <div class="content">
+            = {{ (amount * user.dogePrice / 10 ** user.dogePriceDecimals) | toFixed(2) }} $
+          </div>
+        </div>
+
         <!--
         <div class="content-row row-amount">
           <div class="label">Inviter：</div>
@@ -64,7 +71,7 @@ interest payment time：
 
       <b-col class="right-section"  lg="6">
         <div class="content-row row-operating">
-          <div class="label">Operating range：</div>
+          <div class="label">Interest payment：</div>
           <div class="content">
             <div>Pay interest only due</div>
           </div>
@@ -80,12 +87,12 @@ interest payment time：
               </div>
               <span class="line"></span>
               <div class="timeline-item">
-                <div class="discribe">Value date</div>
+                <div class="discribe">Accrual Start Date</div>
                 <div class="time">{{valueDate}} 08:00:00</div>
               </div>
               <span class="line"></span>
               <div class="timeline-item">
-                <div class="discribe">Interest payment time</div>
+                <div class="discribe">First Distribution Date</div>
                 <div class="time">{{interestDate}} 08:00:00</div>
               </div>
             </div>
@@ -102,15 +109,29 @@ interest payment time：
             variant="primary"
             @click="onApprove"
             :disabled="submitting"
-        >Approve</b-button>
+        >Approve
+        <b-icon
+          v-if="submitting"
+          icon="arrow-repeat"
+          rotate="45"
+          animation="spin"
+        ></b-icon>
+      </b-button>
 
         <b-button
           v-else
             class="subscribe-btn"
             variant="primary"
             @click="onBuy"
-            :disabled="submitting"
-        >Subscribe</b-button>
+            :disabled="submitting || !amount"
+        >Subscribe
+        <b-icon
+          v-if="submitting"
+          icon="arrow-repeat"
+          rotate="45"
+          animation="spin"
+        ></b-icon>
+      </b-button>
           <b-button
             class="cancel-btn"
             @click="onCancel"
@@ -340,8 +361,11 @@ export default defineComponent({
           this.showSuccess('Success', {
             tx: buyTxHash,
           });
+          this.amount = '';
           this.$emit('change-step', 3);
+
           this.$store.dispatch('getPosition');
+          this.$store.dispatch('getWithdrawable');
           this.$store.dispatch('getBalances');
         } else {
           this.showError('Faild', {
@@ -486,6 +510,15 @@ export default defineComponent({
     & .unit {
       color: #333;
       font-size: 18px;
+    }
+  }
+
+  .row-tip {
+    margin-top: -16px;
+    color: #666666;
+    font-size: 14px;
+    .content {
+      margin-left: 160px;
     }
   }
 

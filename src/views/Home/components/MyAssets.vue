@@ -10,7 +10,7 @@
 
       <div class="card">
         <div class="card-top">
-          <span>Earning No. {{ user.period === 0 ? 1 : 2 }}</span>
+          <span>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</span>
           <span> {{ user.period === 0 ? 30 : 365 }} days</span>
         </div>
         <div  class="card-middle">
@@ -24,19 +24,19 @@
 
       </div>
     </div>
-    <h3>My Position</h3>
+    <h3>My Subscription</h3>
     <table class="reward-table">
       <thead class="table-head">
         <tr>
           <th>Product</th>
           <th>Amount</th>
-          <th v-if="user.period === 1">Claimable</th>
+          <th v-if="user.period === 1">Available</th>
           <th>Time</th>
         </tr>
       </thead>
       <tbody>
         <tr class="table-row">
-          <td>Earning No. {{ user.period === 0 ? 1 : 2 }}</td>
+          <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
           <td  v-if="user.period === 0">
             {{ Math.floor(user.withdrawable / user.dogePrice) }}
           </td>

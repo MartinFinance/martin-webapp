@@ -4,7 +4,7 @@
       <b-col class="left" lg="6" order="1" order-md="1">
         <div class="select-section" :class="{active: active === 0}" @click="changeInviteCard(0)">
           <div class="select-top">
-            <span>Earning No. 1</span>
+            <span>Regular Interest</span>
             <span>30 days</span>
           </div>
           <div class="select-middle">
@@ -18,7 +18,7 @@
       <b-col class="right" lg="6" order="2" order-md="2">
         <div class="select-section" :class="{active: active === 1}" @click="changeInviteCard(1)">
           <div class="select-top">
-            <span>Earning No. 2</span>
+            <span>Daily Interest</span>
             <span>365 days</span>
           </div>
           <div class="select-middle">

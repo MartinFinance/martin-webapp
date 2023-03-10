@@ -20,7 +20,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item :active="active === 'Home'" href="#" @click.prevent="toAnchor">Home</b-nav-item>
-          <b-nav-item :active="active === 'Investment'"  href="#Investment" @click.prevent="toAnchor">Investment</b-nav-item>
+          <b-nav-item :active="active === 'Earn'"  href="#Earn" @click.prevent="toAnchor">Earn</b-nav-item>
           <b-nav-item :active="active === 'InvitationRebate'"  href="#InvitationRebate" @click.prevent="toAnchor">Invitation rebate</b-nav-item>
           <b-nav-item :active="active === 'FAQ'"  href="#FAQ" @click.prevent="toAnchor">FAQ</b-nav-item>
         </b-navbar-nav>
@@ -34,6 +34,11 @@
               class="address-btn"
             >
               {{user.address | ellipsis}}
+              <b-icon
+                icon="arrow-repeat"
+                rotate="45"
+                animation="spin"
+              ></b-icon>
             </span>
            <b-button
               v-else
@@ -84,7 +89,7 @@ export default {
     },
   },
   mounted() {
-    const sectionList = ['Investment', 'InvitationRebate', 'FAQ'];
+    const sectionList = ['Earn', 'InvitationRebate', 'FAQ'];
 
     document.addEventListener('scroll', (e) => {
 
