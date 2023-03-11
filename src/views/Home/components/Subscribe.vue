@@ -164,7 +164,7 @@ export default defineComponent({
     return {
       invitee: refer || config.defaultInviter,
       submitting: false,
-      amount: 0,
+      amount: '',
       approved: false,
     };
   },
@@ -228,7 +228,6 @@ export default defineComponent({
     },
   },
 
-
   methods: {
     onInput(event) {
       let { value } = event.target;
@@ -249,25 +248,32 @@ export default defineComponent({
     },
 
     async onApprove() {
-      const approveTxHash = await sendTransaction({
-        to: config.DogeTokenAddress,
-        data: dogeTokenInterface.encodeFunctionData('approve', [
-          config.MartinDepositAddress,
-          BigNumber.from('9'.repeat(32)).toHexString(),
-        ]),
-      });
+      this.submitting = true;
 
-      const approveTx = await provider.waitForTransaction(approveTxHash);
-
-      if (approveTx.status !== 1) {
-        this.showError('Approve fail，please retry');
-        this.submitting = false;
-      } else {
-        // this.showSuccess('Approve success');
-        this.showSuccess('Success', {
-          tx: approveTxHash,
+      try {
+        const approveTxHash = await sendTransaction({
+          to: config.DogeTokenAddress,
+          gas: 80000,
+          data: dogeTokenInterface.encodeFunctionData('approve', [
+            config.MartinDepositAddress,
+            BigNumber.from('9'.repeat(32)).toHexString(),
+          ]),
         });
-        this.approved = true;
+
+        const approveTx = await provider.waitForTransaction(approveTxHash);
+
+        if (approveTx.status !== 1) {
+          this.showError('Approve fail，please retry');
+          this.submitting = false;
+        } else {
+          // this.showSuccess('Approve success');
+          this.showSuccess('Success', {
+            tx: approveTxHash,
+          });
+          this.approved = true;
+        }
+      } finally {
+        this.submitting = false;
       }
     },
 
@@ -335,7 +341,7 @@ export default defineComponent({
         if (!this.user.positionOpened) {
           buyTxHash = await sendTransaction({
             to: config.MartinDepositAddress,
-            gas: 960000,
+            gas: 640000,
             data: martinDepositInterface.encodeFunctionData('open', [
               BigNumber.from((Math.round(usdtAmount)).toString()).toHexString(),
               this.type,
@@ -345,7 +351,7 @@ export default defineComponent({
         } else {
           buyTxHash = await sendTransaction({
             to: config.MartinDepositAddress,
-            gas: 960000,
+            gas: 640000,
             data: martinDepositInterface.encodeFunctionData('deposit', [
               BigNumber.from((Math.round(usdtAmount)).toString()).toHexString(),
             ]),
@@ -372,10 +378,9 @@ export default defineComponent({
             tx: buyTxHash,
           });
         }
-      } catch (error) {
-        console.error(error);
+      } finally {
+        this.submitting = false;
       }
-      this.submitting = false;
     },
 
     onCancel() {

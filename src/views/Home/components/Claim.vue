@@ -92,7 +92,7 @@ interest payment time：
       <b-button
             class="subscribe-btn"
             variant="primary"
-            @click="onBuy"
+            @click="onClaim"
             :disabled="submitting || user.withdrawable === 0 || !amount"
         >
         Redeem
@@ -125,6 +125,7 @@ import config from '@/config';
 import { getTree } from '@/api/common';
 
 import { StandardMerkleTree } from '@openzeppelin/merkle-tree';
+
 
 import {
   dogeTokenContract, dogeTokenInterface, martinDepositInterface, provider,
@@ -193,7 +194,7 @@ export default defineComponent({
       }
     },
 
-    async onBuy() {
+    async onClaim() {
       // const { tokenId } = this.$route.query;
       const { amount } = this;
       if (amount < this.min) {
@@ -213,23 +214,9 @@ export default defineComponent({
 
       this.submitting = true;
 
-      // const dogeBalance = await dogeTokenContract.balanceOf(this.user.address);
-
-      // if (dogeBalance.lt(amount)) {
-      //   this.showError('You balance is not enough');
-      //   this.submitting = false;
-      //   return false;
-      // }
-
       try {
         const usdtAmount = this.amount * this.user.dogePrice;
-        // if (usdtAmount < this.min) {
-        //   usdtAmount = this.min;
-        // }
 
-        // if (usdtAmount > this.max) {
-        //   usdtAmount = this.max;
-        // }
         const content = await getTree();
 
         const tree = StandardMerkleTree.load(content);
@@ -243,7 +230,7 @@ export default defineComponent({
 
         const buyTxHash = await sendTransaction({
           to: config.MartinDepositAddress,
-          gas: 960000,
+          gas: 640000,
           data: martinDepositInterface.encodeFunctionData('withdraw', [
             proof,
             this.user.jsonAmount,

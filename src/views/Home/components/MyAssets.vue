@@ -62,20 +62,31 @@
             class="redeem-btn"
             @click="onRedeem"
         >Redeem</b-button>
-
         <b-button
+            v-if="user.period === 1"
             variant="primary"
             class="redelivery-btn"
-            @click="onCancel"
-        >Redelivery</b-button>
+            :disabled="user.withdrawable === 0"
+            @click="onReinvest"
+        >Reinvest</b-button>
       </div>
     </b-row>
   </div>
 </template>
 
 <script>
-import moment from 'moment';
 import { mapState } from 'vuex';
+import { getTree } from '@/api/common';
+import sendTransaction from '@/common/sendTransaction';
+import config from '@/config';
+
+import { StandardMerkleTree } from '@openzeppelin/merkle-tree';
+import { BigNumber } from 'ethers';
+
+import {
+  dogeTokenContract, dogeTokenInterface, martinDepositInterface, provider,
+} from '@/eth/ethereum';
+
 
 export default {
   data() {
@@ -112,7 +123,81 @@ export default {
 
     onRedeem() {
       this.$emit('change-step', 4);
-    }
+    },
+
+    async onReinvest() {
+      // const { tokenId } = this.$route.query;
+
+      if (!this.user.address) {
+        this.showError('Please connect metamask');
+        return false;
+      }
+
+      // if (amount < this.min) {
+      //   this.showError(`The minimum claim is ${this.min} DOGE`);
+      //   return;
+      // }
+
+      // if (amount > this.max) {
+      //   this.showError(`The maximum claim is ${this.min} DOGE`);
+      //   return;
+      // }
+      const amount = this.user.withdrawable;
+
+      this.submitting = true;
+
+      try {
+        // const usdtAmount = amount * this.user.dogePrice;
+
+        const content = await getTree();
+        const tree = StandardMerkleTree.load(content);
+        let proof = '';
+        // eslint-disable-next-line no-restricted-syntax
+        for (const [i, v] of tree.entries()) {
+          if (v[0].toLowerCase() === this.user.address.toLowerCase()) {
+            proof = tree.getProof(i);
+          }
+        }
+        console.log([
+            proof,
+            this.user.jsonAmount,
+            BigNumber.from(amount.toString()).toHexString(),
+          ])
+        const buyTxHash = await sendTransaction({
+          to: config.MartinDepositAddress,
+          gas: 640000,
+          data: martinDepositInterface.encodeFunctionData('reinvest', [
+            proof,
+            this.user.jsonAmount,
+            BigNumber.from(amount.toString()).toHexString(),
+          ]),
+        });
+
+        this.showPending('Pending', {
+          tx: buyTxHash,
+        });
+
+        const buyTx = await provider.waitForTransaction(buyTxHash);
+
+        if (buyTx.status === 1) {
+          this.showSuccess('Succeeded', {
+            tx: buyTxHash,
+          });
+          this.amount = '';
+
+          this.$store.dispatch('getPosition');
+          this.$store.dispatch('getWithdrawable');
+          this.$store.dispatch('getBalances');
+        } else {
+          this.showError('Failed', {
+            tx: buyTxHash,
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      this.submitting = false;
+    },
   }
 };
 </script>
