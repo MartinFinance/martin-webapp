@@ -207,7 +207,6 @@ export default {
   margin-right: 24px;
 }
 
-
 .reward-table {
     width: 100%;
     margin-top: 20px;
