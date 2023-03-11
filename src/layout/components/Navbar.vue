@@ -35,6 +35,7 @@
             >
               {{user.address | ellipsis}}
               <b-icon
+                v-if="user.addressLoading"
                 icon="arrow-repeat"
                 rotate="45"
                 animation="spin"

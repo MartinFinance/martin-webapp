@@ -11,6 +11,7 @@ const user = {
   // namespaced: true,
   state: {
     address: '',
+    addressLoading: false,
     chainId: '',
     ethBalance: 0,
     // usdtBalance: 0,
@@ -39,6 +40,7 @@ const user = {
     loaded: !isMetamask,
 
     invitees: [],
+
   },
 
   mutations: {

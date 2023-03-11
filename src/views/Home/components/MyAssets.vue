@@ -62,6 +62,12 @@
             class="redeem-btn"
             @click="onRedeem"
         >Redeem</b-button>
+
+        <b-button
+            variant="primary"
+            class="redelivery-btn"
+            @click="onCancel"
+        >Redelivery</b-button>
       </div>
     </b-row>
   </div>
@@ -179,10 +185,12 @@ export default {
  }
  .btn-wrapper {
   margin-top: 40px;
+  text-align: center;
  }
+
  .redeem-btn,
- .subscribe-btn {
-  // margin-top: 50px;
+ .subscribe-btn,
+ .redelivery-btn {
   height: 56px;
   padding: 0.25rem 3rem;
   font-weight: bold;
@@ -194,9 +202,11 @@ export default {
   font-weight: bold;
 }
 
-.subscribe-btn {
+.subscribe-btn,
+.redeem-btn {
   margin-right: 24px;
 }
+
 
 .reward-table {
     width: 100%;
@@ -233,6 +243,13 @@ export default {
 
  .btn-wrapper {
     margin-top: 24px;
+    .redeem-btn {
+      margin-right: 0;
+    }
+
+    .redelivery-btn {
+      margin-top: 12px;
+    }
   }
 
   .redeem-btn,

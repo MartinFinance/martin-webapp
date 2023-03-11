@@ -103,10 +103,12 @@ interest payment time：
           animation="spin"
         ></b-icon>
       </b-button>
-          <b-button
+      <b-button
             class="cancel-btn"
             @click="onCancel"
         >Cancel</b-button>
+
+
     </div>
   </b-row>
 
@@ -447,6 +449,13 @@ export default defineComponent({
 
 .btn-wrapper {
   margin-top: 46px;
+  text-align: center;
+
+  .tip {
+    font-size: 12px;
+    color: #666666;
+    margin-bottom: 12px;
+  }
 }
 
 .timeline {
