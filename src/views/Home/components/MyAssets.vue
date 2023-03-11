@@ -157,6 +157,11 @@ export default {
             proof = tree.getProof(i);
           }
         }
+
+        if (!proof) {
+          this.showError('There is no proof for your address');
+          return false;
+        }
         console.log([
           proof,
           this.user.jsonAmount,
