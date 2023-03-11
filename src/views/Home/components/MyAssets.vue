@@ -87,7 +87,6 @@ import {
   dogeTokenContract, dogeTokenInterface, martinDepositInterface, provider,
 } from '@/eth/ethereum';
 
-
 export default {
   data() {
     return {
@@ -159,10 +158,10 @@ export default {
           }
         }
         console.log([
-            proof,
-            this.user.jsonAmount,
-            BigNumber.from(amount.toString()).toHexString(),
-          ])
+          proof,
+          this.user.jsonAmount,
+          BigNumber.from(amount.toString()).toHexString(),
+        ]);
         const buyTxHash = await sendTransaction({
           to: config.MartinDepositAddress,
           gas: 640000,
@@ -198,7 +197,7 @@ export default {
       }
       this.submitting = false;
     },
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
