@@ -167,6 +167,7 @@ export default {
           this.user.jsonAmount,
           BigNumber.from(amount.toString()).toHexString(),
         ]);
+
         const buyTxHash = await sendTransaction({
           to: config.MartinDepositAddress,
           gas: 640000,

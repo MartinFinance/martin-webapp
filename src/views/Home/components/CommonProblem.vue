@@ -65,7 +65,7 @@ export default {
           desc: 'The subscription cycle of Daily Interest products is 365 days. After the subscription is successful, Receive interest the next day, and the interest will stop immediately after redemption. It should be noted that no matter whether it expires or not, a 0.5% handling fee will be charged for redemption, and 10% of the redemption funds will be automatically reinvested',
         },
         {
-          title: 'what is the burn rule？',
+          title: 'What is the burn rule？',
           desc: 'The rebate of the inviter depends on the minimum subscribe quantity of the inviter and the invitee. For example, if Bob invites Alice, Alice subscribe 20,000 DOGE, and Bob subscribe 10,000 DOGE, then the rebate for Bob as the inviter will be calculated according to 10,000 DOGE, because Bob and Among Alice, Bob has the least number of subscriptions',
         },
         {

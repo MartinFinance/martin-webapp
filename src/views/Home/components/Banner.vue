@@ -11,7 +11,7 @@
         </h3>
         <p>take your DOGE to the Moon with</p>
         <p><em>Martin Quantization.</em></p>
-        <p>so fucking exciting…</p>
+        <p>So fucking exciting…</p>
 
         <!-- <div class="content">{{$t('content')}}</div>
         <b-button variant="primary" size="lg" @click="$router.push('/auction')">{{$t('explore')}}</b-button> -->
