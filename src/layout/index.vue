@@ -68,20 +68,24 @@
                 <thead class="table-head">
                   <tr>
                     <th>Date</th>
-                    <th>Product</th>
+                    <th>Type</th>
+                    <th>Address</th>
                     <th>Amount</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <template v-if="commissionList.length">
-                    <tr class="table-row" v-for="item in commissionList" :key="item.time + 0">
+                  <template v-if="rebateList.length">
+                    <tr class="table-row" v-for="item in rebateList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
-                      <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
-                      <td>{{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
+                      <td v-if="item.period != null">{{ item.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
+                      <td v-if="item.level != null">Invition</td>
+                      <td v-if="item.invitee != null">Global</td>
+                      <td>{{ item.invitee || '-' }}</td>
+                      <td>{{ item.amount / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >
-                    <td colspan="3">No Data</td>
+                    <td colspan="4">No Data</td>
                   </tr>
                 </tbody>
               </table>
@@ -134,27 +138,18 @@ export default {
       },
       redemptionList: (state) => {
         if (state.user.events) {
-          console.log(state.user.events.filter((item) => item.eveType === 2))
+          // console.log(state.user.events.filter((item) => item.eveType === 2))
           return state.user.events.filter((item) => item.eveType === 2);
         }
         return [];
       },
-      commissionList: () => {
+      rebateList: () => {
         return [];
       }
     }),
   },
   async created() {
     if (window.ethereum) {
-      // const { chainId } = window.ethereum;
-
-      // if (!(chainId === '0x38' || chainId === '0x61')) {
-      //   this.showError(this.$t('selectNet'), {
-      //     noCloseButton: true,
-      //     autoHideDelay: 5000,
-      //   });
-      // }
-
       const chainId = await window.ethereum.request({ method: 'eth_chainId' });
 
       if (!BigNumber.from(chainId).eq(0x38) && !BigNumber.from(chainId).eq(0x61)) {
@@ -172,6 +167,8 @@ export default {
           });
         }
       }
+
+
     }
   },
   methods: {

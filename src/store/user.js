@@ -3,7 +3,7 @@ import moment from 'moment';
 import {
   dogeTokenContract, USDTContract, martinDepositContract, provider,
 } from '@/eth/ethereum';
-import { getTree } from '@/api/common';
+import { getTree, getHistory } from '@/api/common';
 
 const isMetamask = !!window.ethereum;
 
@@ -40,6 +40,7 @@ const user = {
     loaded: !isMetamask,
 
     invitees: [],
+    rebateHistory: [],
 
   },
 
@@ -79,6 +80,7 @@ const user = {
         dispatch('getWithdrawable');
         dispatch('getBalances');
         dispatch('getDecimals');
+        dispatch('getHistory');
       }
     },
 
@@ -153,6 +155,18 @@ const user = {
       }
     },
 
+    async getHistory({ commit, state }) {
+
+      const res = await getHistory();
+
+      console.log('--- ooo ---');
+      console.log(res);
+
+      commit('UPDATE_STATE', {
+        rebateHistory: res.invition,
+      });
+    },
+
     async getDecimals({ commit }) {
       const [usdDecimals, dogeDecimals] = await Promise.all([
         martinDepositContract.usdDecimals(),
@@ -199,7 +213,6 @@ const user = {
       if (state.address) {
         const invitees = await martinDepositContract.getMyInvitees(state.address);
 
-        console.log(invitees);
         commit('UPDATE_STATE', {
           invitees,
         });

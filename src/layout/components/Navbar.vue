@@ -312,5 +312,9 @@ export default {
       margin-top: 12px;
     }
   }
+
+  .address-btn {
+    margin-top: 12px;
+  }
 }
 </style>

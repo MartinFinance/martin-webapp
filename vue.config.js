@@ -63,8 +63,6 @@ module.exports = {
     // 移除 prefetch 插件
     // config.plugins.delete('prefetch-index');
     // config.plugins.delete('prefetch-index');
-
-    console.log(config)
     config.module
       .rule("i18n")
       .resourceQuery(/blockType=i18n/)
