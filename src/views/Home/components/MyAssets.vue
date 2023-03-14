@@ -53,21 +53,21 @@
     <b-row align-h="center">
       <div class="btn-wrapper">
         <b-button
-            class="subscribe-btn"
-            variant="primary"
-            @click="onSubscribe"
+          class="subscribe-btn"
+          variant="primary"
+          @click="onSubscribe"
         >Subscribe</b-button>
-          <b-button
-            variant="primary"
-            class="redeem-btn"
-            @click="onRedeem"
+        <b-button
+          variant="primary"
+          class="redeem-btn"
+          @click="onRedeem"
         >Redeem</b-button>
         <b-button
-            v-if="user.period === 1"
-            variant="primary"
-            class="redelivery-btn"
-            :disabled="user.withdrawable === 0"
-            @click="onReinvest"
+          v-if="user.period === 1"
+          variant="primary"
+          class="redelivery-btn"
+          :disabled="user.withdrawable === 0"
+          @click="onReinvest"
         >Reinvest</b-button>
       </div>
     </b-row>
