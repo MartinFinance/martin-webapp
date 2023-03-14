@@ -12,7 +12,7 @@
         <div class="tip">
           Whether to qualify for global dividends
           <img id="tooltip-target-007" class="question" src="@/assets/img/question@2x.png" alt="">
-          <em>yes</em>
+          <em> {{ user.inviterGrade >= 4 ? 'Yes' : 'No'}}</em>
 
           <b-tooltip target="tooltip-target-007" triggers="hover">
             I am tooltip <b>component</b> content!
@@ -28,8 +28,8 @@
             </tr>
           </thead>
           <tbody>
-            <template v-if="list.length">
-              <tr class="table-row" v-for="item in list">
+            <template v-if="currentList.length">
+              <tr class="table-row" v-for="item in currentList">
                 <td>{{ item.addr | ellipsis }}</td>
                 <td>{{ item.level + 1 }}</td>
                 <td>{{ item.inviter | ellipsis }}</td>
@@ -41,12 +41,12 @@
               </tr>
           </tbody>
         </table>
-
+        <!-- v-if="user.invitees.length > pageSize" -->
+<!--  -->
         <Pagination
-          v-if="user.invitees.length > pageSize"
           :page-size="pageSize"
           :page="page"
-          :total="total"
+          :total="user.invitees.length"
           @change="onPageChange"
         />
       </b-col>
@@ -78,26 +78,15 @@ export default {
       total: 10,
       pageSize: 10,
       active: '',
-      // list: [
-      //   {
-      //     address: '0xa7h1...Dw3F887',
-      //     level: '1',
-      //     superior: '0xa7h1...Dw3F887',
-      //     date: '2022-12-11 08:00:00',
-      //   },
-      //   {
-      //     address: '0xa7h1...Dw3F887',
-      //     level: '1',
-      //     superior: '0xa7h1...Dw3F887',
-      //     date: '2022-12-11 08:00:00',
-      //   },
-      // ],
     };
   },
 
   computed: {
     ...mapState(['user']),
     list() {
+      return this.user.invitees;
+    },
+    currentList() {
       return this.user.invitees.slice((this.page - 1) * this.pageSize, this.page * this.pageSize)
     }
   },

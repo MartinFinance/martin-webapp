@@ -27,8 +27,10 @@ const user = {
     events: [],
     withdrawable: 0,
     jsonAmount: 0,
-    proofTarget: [],
+    // proofTarget: [],
     amount365: 0,
+
+    inviterGrade: 0,
 
     usdDecimals: 8,
     dogeDecimals: 18,
@@ -76,11 +78,14 @@ const user = {
           chainId,
           loaded: true,
         });
-        dispatch('getPosition');
-        dispatch('getWithdrawable');
+
         dispatch('getBalances');
         dispatch('getDecimals');
         dispatch('getHistory');
+        dispatch('getInviterGrade');
+
+        await dispatch('getPosition');
+        dispatch('getWithdrawable');
       }
     },
 
@@ -135,7 +140,6 @@ const user = {
       if (opened) {
         const position = await martinDepositContract.getPosition(state.address);
         commit('UPDATE_STATE', {
-          // positionOpened: true,
           depositAmount: position.depositAmount,
           period: position.period,
           events: position.events,
@@ -190,6 +194,14 @@ const user = {
       });
     },
 
+    async getInviterGrade({ state, commit }) {
+      const result = await martinDepositContract.getInviterGrade(state.address);
+
+      commit('UPDATE_STATE', {
+        inviterGrade: result.toNumber(),
+      });
+    },
+
     async getWithdrawable({ state, commit }) {
       const tree = await getTree();
 
@@ -202,7 +214,11 @@ const user = {
           commit('UPDATE_STATE', {
             withdrawable,
             jsonAmount,
-            proofTarget: target,
+          });
+        } else {
+          commit('UPDATE_STATE', {
+            withdrawable: state.position.period === 1 ? 0 : state.depositAmount - state.withdrawAmount,
+            jsonAmount: 0,
           });
         }
       }

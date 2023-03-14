@@ -67,11 +67,6 @@ export default {
     ...mapState(['user']),
   },
 
-  created() {
-    // this.getMines();
-
-  },
-
   methods: {
 
     ...mapActions(['showComingSoon']),

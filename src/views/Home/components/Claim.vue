@@ -123,7 +123,6 @@ import { getTree } from '@/api/common';
 
 import { StandardMerkleTree } from '@openzeppelin/merkle-tree';
 
-
 import {
   dogeTokenContract, dogeTokenInterface, martinDepositInterface, provider,
 } from '@/eth/ethereum';
@@ -206,6 +205,11 @@ export default defineComponent({
 
       if (!this.user.address) {
         this.showError('Please connect metamask');
+        return false;
+      }
+
+      if (!this.user.jsonAmount) {
+        this.showError('Withdrawal is only possible after 24 hours');
         return false;
       }
 

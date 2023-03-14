@@ -162,11 +162,6 @@ export default {
           this.showError('There is no proof for your address');
           return false;
         }
-        console.log([
-          proof,
-          this.user.jsonAmount,
-          BigNumber.from(amount.toString()).toHexString(),
-        ]);
 
         const buyTxHash = await sendTransaction({
           to: config.MartinDepositAddress,

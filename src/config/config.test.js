@@ -1,6 +1,6 @@
 export default {
   webUrl: 'https://steep-math-6995.on.fleek.co',
-  deubg: true,
+  debug: true,
 
   // defaultPricePrecision: 8,
   // defaultAmountPrecision: 4,

@@ -301,28 +301,6 @@ export default defineComponent({
       }
 
       try {
-        // const allowance = await dogeTokenContract.allowance(
-        //   this.user.address,
-        //   config.MartinDepositAddress,
-        // );
-
-        // if (allowance.lt(amount)) {
-        //   const approveTxHash = await sendTransaction({
-        //     to: config.DogeTokenAddress,
-        //     data: dogeTokenInterface.encodeFunctionData('approve', [
-        //       config.MartinDepositAddress,
-        //       BigNumber.from('9'.repeat(32)).toHexString(),
-        //     ]),
-        //   });
-
-        //   const approveTx = await provider.waitForTransaction(approveTxHash);
-
-        //   if (approveTx.status !== 1) {
-        //     this.showError('Approve fail，please retry');
-        //     this.submitting = false;
-        //     return;
-        //   }
-        // }
 
         let usdtAmount = this.amount * this.user.dogePrice;
 

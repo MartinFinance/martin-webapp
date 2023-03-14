@@ -15,10 +15,6 @@ import Marshmallow from './components/Marshmallow.vue';
 import CommonProblem from './components/CommonProblem.vue';
 import Recommend from './components/Recommend.vue';
 import Invitation from './components/Invitation.vue';
-// import Artists from './components/Artists.vue';
-// import Auction from './components/Auction.vue';
-// import ArtWorks from './components/ArtWorks.vue';
-// import MyWorks from './components/MyWorks.vue';
 
 export default {
   name: 'Home',

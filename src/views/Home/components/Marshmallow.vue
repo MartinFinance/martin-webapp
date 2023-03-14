@@ -50,7 +50,6 @@ import Subscribe from './Subscribe.vue';
 import MyAssets from './MyAssets.vue';
 import Claim from './Claim.vue';
 
-
 export default {
   components: {
     SubscribeSelect,
