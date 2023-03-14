@@ -107,11 +107,8 @@ interest payment time：
             class="cancel-btn"
             @click="onCancel"
         >Cancel</b-button>
-
-
     </div>
   </b-row>
-
   </div>
 </template>
 

@@ -12,7 +12,7 @@
             <div class="invite-head">
               <span :class="{ active: active === 1}" @click="changeInviteCard(1)">Subscription</span>
               <span :class="{ active: active === 2}" @click="changeInviteCard(2)">Redemption</span>
-              <span :class="{ active: active === 3}" @click="changeInviteCard(3)">Rebate</span>
+              <span :class="{ active: active === 3}" @click="changeInviteCard(3)">Reward</span>
             </div>
 
             <template v-if="active === 1">
@@ -21,7 +21,7 @@
                   <tr>
                     <th>Date</th>
                     <th>Product</th>
-                    <th>Amount</th>
+                    <th>Value</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -29,7 +29,7 @@
                     <tr class="table-row" v-for="item in subscriptionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
                       <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
-                      <td>{{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
+                      <td>$ {{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >
@@ -45,7 +45,7 @@
                   <tr>
                     <th>Date</th>
                     <th>Product</th>
-                    <th>Amount</th>
+                    <th>Value</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,7 +53,7 @@
                     <tr class="table-row" v-for="item in redemptionList" :key="item.time + 0">
                       <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
                       <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
-                      <td>{{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
+                      <td>$ {{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >
@@ -70,18 +70,18 @@
                     <th>Date</th>
                     <th>Type</th>
                     <th>Address</th>
-                    <th>Amount</th>
+                    <th>Value</th>
                   </tr>
                 </thead>
                 <tbody>
                   <template v-if="rebateList.length">
-                    <tr class="table-row" v-for="item in rebateList" :key="item.time + 0">
-                      <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
-                      <td v-if="item.period != null">{{ item.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
-                      <td v-if="item.level != null">Invition</td>
-                      <td v-if="item.invitee != null">Global</td>
-                      <td>{{ item.invitee || '-' }}</td>
-                      <td>{{ item.amount / 10 ** user.usdDecimals | toFixed }}</td>
+                    <tr class="table-row" v-for="item in rebateList" >
+                      <td> {{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
+                      <td v-if="item.type === 'interest'">{{ item.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
+                      <td v-if="item.type === 'invition'">Invition</td>
+                      <!-- <td v-if="item.invitee != null">Global</td> -->
+                      <td>{{ item.invitee || '-' | trimAddress }}</td>
+                      <td>$ {{ item.amount / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >
@@ -143,8 +143,8 @@ export default {
         }
         return [];
       },
-      rebateList: () => {
-        return [];
+      rebateList: (state) => {
+        return state.user.rewards
       }
     }),
   },

@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import moment from 'moment';
+import config from '@/config';
 import {
   dogeTokenContract, USDTContract, martinDepositContract, provider,
 } from '@/eth/ethereum';
@@ -40,7 +41,7 @@ const user = {
     loaded: !isMetamask,
 
     invitees: [],
-    rebateHistory: [],
+    rewards: [],
 
   },
 
@@ -70,7 +71,6 @@ const user = {
         if (state.address) {
           window.location.reload();
         }
-        console.log('handleAccountsChanged', accounts[0], state.address);
         commit('UPDATE_STATE', {
           address: accounts[0],
           chainId,
@@ -139,15 +139,16 @@ const user = {
           depositAmount: position.depositAmount,
           period: position.period,
           events: position.events,
+          subPositions: position.subPositions,
           reinvestAmount: position.reinvestAmount,
           withdrawAmount: position.withdrawAmount,
         });
 
         if (position.period === 1) {
           commit('UPDATE_STATE', {
-            amount365: position.events.reduce((prev, item) => {
-              if (moment(item.time * 1000).isAfter(moment().subtract(365, 'days'))) {
-                return item.changedAmount.add(prev);
+            amount365: position.subPositions.reduce((prev, item) => {
+              if (moment(item.time * 1000).isAfter(moment().subtract(365, config.debug ? 'hours' : 'days'))) {
+                return item.amount.add(prev);
               }
             }, 0),
           });
@@ -155,15 +156,13 @@ const user = {
       }
     },
 
-    async getHistory({ commit, state }) {
-
+    async getHistory({ commit }) {
       const res = await getHistory();
-
-      console.log('--- ooo ---');
-      console.log(res);
-
       commit('UPDATE_STATE', {
-        rebateHistory: res.invition,
+        rewards: res.rewards.map((item) => ({
+          ...item,
+          time: +item.time.hex,
+        })),
       });
     },
 

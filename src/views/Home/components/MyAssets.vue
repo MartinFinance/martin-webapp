@@ -29,7 +29,7 @@
       <thead class="table-head">
         <tr>
           <th>Product</th>
-          <th>Amount</th>
+          <th>Value</th>
           <th v-if="user.period === 1">Available</th>
           <th>Time</th>
         </tr>
@@ -38,13 +38,13 @@
         <tr class="table-row">
           <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
           <td  v-if="user.period === 0">
-            {{ Math.floor(user.withdrawable / user.dogePrice) }}
+           $ {{ user.withdrawable  / 10 ** user.usdDecimals | toFixed }}
           </td>
           <td  v-if="user.period === 1">
-           {{ Math.floor(user.amount365 / user.dogePrice)}}
+           $ {{ user.amount365  / 10 ** user.usdDecimals | toFixed}}
           </td>
           <td v-if="user.period === 1">
-            {{ Math.floor(user.withdrawable / user.dogePrice) }}
+           $ {{ user.withdrawable  / 10 ** user.usdDecimals | toFixed }}
           </td>
           <td>{{ time | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
         </tr>

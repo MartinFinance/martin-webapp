@@ -31,7 +31,7 @@
             <template v-if="list.length">
               <tr class="table-row" v-for="item in list">
                 <td>{{ item.addr | ellipsis }}</td>
-                <td>{{ item.level }}</td>
+                <td>{{ item.level + 1 }}</td>
                 <td>{{ item.inviter | ellipsis }}</td>
                 <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
               </tr>
