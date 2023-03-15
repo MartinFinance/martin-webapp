@@ -81,7 +81,7 @@
                       <td v-if="item.type === 'invition'">Invition</td>
                       <!-- <td v-if="item.invitee != null">Global</td> -->
                       <td>{{ item.invitee || '-' | trimAddress }}</td>
-                      <td>$ {{ item.amount / 10 ** user.usdDecimals | toFixed }}</td>
+                      <td>$ {{ item.amount.hex / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
                   </template>
                   <tr v-else class="table-row empty-row" >
@@ -138,7 +138,6 @@ export default {
       },
       redemptionList: (state) => {
         if (state.user.events) {
-          // console.log(state.user.events.filter((item) => item.eveType === 2))
           return state.user.events.filter((item) => item.eveType === 2);
         }
         return [];
@@ -269,6 +268,7 @@ export default {
   .table-row {
     font-size: 14px;
     color: #333333;
+    white-space: nowrap;
     td {
       padding: 18px 30px;
       font-weight: bold;

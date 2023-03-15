@@ -87,13 +87,11 @@ export default {
       return this.user.invitees;
     },
     currentList() {
-      return this.user.invitees.slice((this.page - 1) * this.pageSize, this.page * this.pageSize)
-    }
+      return this.user.invitees.slice((this.page - 1) * this.pageSize, this.page * this.pageSize);
+    },
   },
 
   created() {
-    // this.getMines();
-    // martinDepositCont
     this.$store.dispatch('getInvitees');
   },
 

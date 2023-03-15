@@ -160,8 +160,8 @@ const user = {
       }
     },
 
-    async getHistory({ commit }) {
-      const res = await getHistory();
+    async getHistory({ commit, state }) {
+      const res = await getHistory(state.address);
       commit('UPDATE_STATE', {
         rewards: res.rewards.map((item) => ({
           ...item,

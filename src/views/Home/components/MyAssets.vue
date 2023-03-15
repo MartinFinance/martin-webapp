@@ -126,7 +126,6 @@ export default {
 
     async onReinvest() {
       // const { tokenId } = this.$route.query;
-
       if (!this.user.address) {
         this.showError('Please connect metamask');
         return false;
