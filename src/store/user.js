@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import moment from 'moment';
 import config from '@/config';
+import { utils } from 'ethers';
 import {
   dogeTokenContract, USDTContract, martinDepositContract, provider,
 } from '@/eth/ethereum';
@@ -163,7 +164,7 @@ const user = {
     },
 
     async getHistory({ commit, state }) {
-      const res = await getHistory(state.address);
+      const res = await getHistory(utils.getAddress(state.address));
       commit('UPDATE_STATE', {
         rewards: res.rewards.map((item) => ({
           ...item,
