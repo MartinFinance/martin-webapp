@@ -79,7 +79,7 @@
                       <td> {{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
                       <td v-if="item.type === 'interest'">{{ item.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
                       <td v-if="item.type === 'invition'">Invition</td>
-                      <!-- <td v-if="item.invitee != null">Global</td> -->
+                      <td v-if="item.type === 'globalShare'">Global Share</td>
                       <td>{{ item.invitee || '-' | trimAddress }}</td>
                       <td>$ {{ item.amount.hex / 10 ** user.usdDecimals | toFixed }}</td>
                     </tr>
@@ -142,9 +142,7 @@ export default {
         }
         return [];
       },
-      rebateList: (state) => {
-        return state.user.rewards
-      }
+      rebateList: (state) => state.user.rewards.sort((a, b) => b.time - a.time),
     }),
   },
   async created() {
@@ -166,8 +164,6 @@ export default {
           });
         }
       }
-
-
     }
   },
   methods: {

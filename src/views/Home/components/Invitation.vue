@@ -74,13 +74,25 @@
                     Hold DOGE financial management
                   </b-tooltip>
                 </div>
+
                 <b-button
+                  v-if="user.address"
                   class="invite-btn"
                   variant="primary"
                   @click="onScrollTo"
                 >
                   Qualified for Invitation
                 </b-button>
+
+                <b-button
+                  v-else
+                  class="invite-btn"
+                  variant="primary"
+                  @click="unlock"
+                >
+                  Connet Wallet
+                </b-button>
+
               </template>
             </div>
 
@@ -182,6 +194,9 @@ export default {
 
     changeInviteCard(id) {
       this.active = id;
+    },
+    unlock() {
+      this.$store.dispatch('unlockByMetaMask');
     },
     onScrollTo() {
       const targetElement = document.getElementById('Investment');

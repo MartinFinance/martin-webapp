@@ -88,7 +88,7 @@ interest payment time：
     <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
-      <div class="tip">Tips:0.5% handling fee will be deducted for redemption, and 10% of the funds will be automatically reinvested</div>
+      <div class="tip" v-if="user.period === 1">Tips:0.5% handling fee will be deducted for redemption</div>
       <b-button
             class="subscribe-btn"
             variant="primary"

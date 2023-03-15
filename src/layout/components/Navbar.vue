@@ -27,7 +27,7 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-button variant="link"  class="history-btn"  @click.stop.prevent="$emit('history')">History</b-button>
+          <b-button   v-if="user.address" variant="link"  class="history-btn"  @click.stop.prevent="$emit('history')">History</b-button>
           <!-- <b-button class="lang-switch" variant="link">English</b-button> -->
             <span
               v-if="user.address"
