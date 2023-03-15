@@ -133,6 +133,8 @@ const user = {
 
     async getPosition({ commit, state }) {
       const opened = await martinDepositContract.checkPositionOpened(state.address);
+
+      console.log(opened);
       commit('UPDATE_STATE', {
         positionOpened: opened,
       });
@@ -217,7 +219,7 @@ const user = {
           });
         } else {
           commit('UPDATE_STATE', {
-            withdrawable: state.position.period === 1 ? 0 : state.depositAmount - state.withdrawAmount,
+            withdrawable: state.period === 1 ? 0 : state.depositAmount - state.withdrawAmount,
             jsonAmount: 0,
           });
         }

@@ -348,7 +348,7 @@ export default defineComponent({
           this.amount = '';
           this.$emit('change-step', 3);
 
-          this.$store.dispatch('getPosition');
+          await this.$store.dispatch('getPosition');
           this.$store.dispatch('getWithdrawable');
           this.$store.dispatch('getBalances');
         } else {

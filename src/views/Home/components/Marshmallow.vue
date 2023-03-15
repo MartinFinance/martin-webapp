@@ -72,6 +72,8 @@ export default {
 
   watch: {
     'user.positionOpened': function (val) {
+
+      console.log(val)
       if (val) {
         this.step = 3;
       }
