@@ -116,6 +116,11 @@ export async function getHistory(address) {
         if (d.sha) {
           return fetch(
             `https://api.github.com/repos/MartinFinance/martin-merkletreedata/git/blobs/${d.sha}`,
+            {
+              headers: {
+                Authorization: 'token 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',
+              },
+            },
           );
         }
 
