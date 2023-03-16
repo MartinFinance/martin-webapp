@@ -154,7 +154,7 @@ const user = {
         if (position.period === 1) {
           commit('UPDATE_STATE', {
             amount365: position.subPositions.reduce((prev, item) => {
-              if (moment(item.time * 1000).isAfter(moment().subtract(365, config.debug ? 'hours' : 'days'))) {
+              if (moment(item.time * 1000).isAfter(moment().subtract(config.debug ? 9 : 365, config.debug ? 'hours' : 'days'))) {
                 return item.amount.add(prev);
               }
             }, 0),
