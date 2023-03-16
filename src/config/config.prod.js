@@ -16,7 +16,7 @@ export default {
 
   browser: 'https://testnet.bscscan.com',
   gethServer: 'https://data-seed-prebsc-1-s1.binance.org:8545',
-  chainId: 97,
+  chainId: '0x61',
 
   addressZero: '0x0000000000000000000000000000000000000000',
   hashZero: '0x0000000000000000000000000000000000000000000000000000000000000000',
