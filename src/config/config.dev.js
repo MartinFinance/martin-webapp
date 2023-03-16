@@ -21,6 +21,7 @@ export default {
   addressZero: '0x0000000000000000000000000000000000000000',
   hashZero: '0x0000000000000000000000000000000000000000000000000000000000000000',
 
+  githubToken: 'token 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',
   defaultInviter: '0x74cfa61e62232a4691c7cb2F108f2EFE54117fD5',
   // 本地测试节点
   // defaultServer: 'https://api-sandbox.i.ddex.io',
