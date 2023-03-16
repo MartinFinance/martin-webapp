@@ -58,6 +58,11 @@ export async function getTree() {
     .then((d) => d.json())
     .then((d) => fetch(
       `https://api.github.com/repos/MartinFinance/martin-merkletreedata/git/blobs/${d.sha}`,
+      {
+        headers: {
+          Authorization: 'token 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',
+        },
+      },
     ))
     .then((d) => d.json())
     .then((d) => JSON.parse(atob(d.content)));
@@ -100,7 +105,6 @@ export async function getTree() {
 //   return data;
 // }
 
-
 export async function getHistory(address) {
   try {
     const data = await fetch(
@@ -126,7 +130,7 @@ export async function getHistory(address) {
 
         return {
           rewards: [],
-        }
+        };
       })
       .then((d) => d.json())
       .then((d) => JSON.parse(atob(d.content)));
