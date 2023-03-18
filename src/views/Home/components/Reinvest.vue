@@ -88,14 +88,13 @@ interest payment time：
     <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
-      <div class="tip" v-if="user.period === 1">Tips:0.5% handling fee will be deducted for redemption</div>
       <b-button
-        class="subscribe-btn"
-        variant="primary"
-        @click="onClaim"
-        :disabled="submitting || user.withdrawable === 0 || !amount"
-      >
-        Redeem
+            class="subscribe-btn"
+            variant="primary"
+            @click="onReinvest"
+            :disabled="submitting || user.withdrawable === 0 || !amount"
+        >
+        Reinvest
         <b-icon
           v-if="submitting"
           icon="arrow-repeat"
@@ -190,36 +189,30 @@ export default defineComponent({
       }
     },
 
-    async onClaim() {
+    async onReinvest() {
       // const { tokenId } = this.$route.query;
-      const { amount } = this;
-      if (amount < this.min) {
-        this.showError(`The minimum claim is ${this.min} DOGE`);
-        return;
-      }
-
-      if (amount > this.max) {
-        this.showError(`The maximum claim is ${this.min} DOGE`);
-        return;
-      }
-
       if (!this.user.address) {
         this.showError('Please connect metamask');
         return false;
       }
 
-      if (!this.user.jsonAmount) {
-        this.showError('Withdrawal is only possible after 24 hours');
-        return false;
+      if (this.amount < this.min) {
+        this.showError(`The minimum claim is ${this.min} DOGE`);
+        return;
       }
+
+      if (this.amount > this.max) {
+        this.showError(`The maximum claim is ${this.min} DOGE`);
+        return;
+      }
+      // const amount = this.user.withdrawable;
 
       this.submitting = true;
 
       try {
-        const usdtAmount = this.amount * this.user.dogePrice;
+        // const usdtAmount = amount * this.user.dogePrice;
 
         const content = await getTree();
-
         const tree = StandardMerkleTree.load(content);
         let proof = '';
         // eslint-disable-next-line no-restricted-syntax
@@ -229,13 +222,22 @@ export default defineComponent({
           }
         }
 
+        if (!proof) {
+          this.showError('There is no proof for your address');
+          return false;
+        }
+
+        const usdtAmount = this.amount * this.user.dogePrice;
+
+        // console.log(this.amount.toString());
+        // console.log(usdtAmount.toString());
         const buyTxHash = await sendTransaction({
           to: config.MartinDepositAddress,
           gas: 640000,
-          data: martinDepositInterface.encodeFunctionData('withdraw', [
+          data: martinDepositInterface.encodeFunctionData('reinvest', [
             proof,
             this.user.jsonAmount,
-            BigNumber.from((Math.round(usdtAmount)).toString()).toHexString(),
+            BigNumber.from(usdtAmount.toString()).toHexString(),
           ]),
         });
 

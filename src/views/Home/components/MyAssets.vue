@@ -125,11 +125,12 @@ export default {
     },
 
     async onReinvest() {
+      this.$emit('change-step', 4, 'reinvest');
       // const { tokenId } = this.$route.query;
-      if (!this.user.address) {
-        this.showError('Please connect metamask');
-        return false;
-      }
+      // if (!this.user.address) {
+      //   this.showError('Please connect metamask');
+      //   return false;
+      // }
 
       // if (amount < this.min) {
       //   this.showError(`The minimum claim is ${this.min} DOGE`);
@@ -140,62 +141,6 @@ export default {
       //   this.showError(`The maximum claim is ${this.min} DOGE`);
       //   return;
       // }
-      const amount = this.user.withdrawable;
-
-      this.submitting = true;
-
-      try {
-        // const usdtAmount = amount * this.user.dogePrice;
-
-        const content = await getTree();
-        const tree = StandardMerkleTree.load(content);
-        let proof = '';
-        // eslint-disable-next-line no-restricted-syntax
-        for (const [i, v] of tree.entries()) {
-          if (v[0].toLowerCase() === this.user.address.toLowerCase()) {
-            proof = tree.getProof(i);
-          }
-        }
-
-        if (!proof) {
-          this.showError('There is no proof for your address');
-          return false;
-        }
-
-        const buyTxHash = await sendTransaction({
-          to: config.MartinDepositAddress,
-          gas: 640000,
-          data: martinDepositInterface.encodeFunctionData('reinvest', [
-            proof,
-            this.user.jsonAmount,
-            BigNumber.from(amount.toString()).toHexString(),
-          ]),
-        });
-
-        this.showPending('Pending', {
-          tx: buyTxHash,
-        });
-
-        const buyTx = await provider.waitForTransaction(buyTxHash);
-
-        if (buyTx.status === 1) {
-          this.showSuccess('Succeeded', {
-            tx: buyTxHash,
-          });
-          this.amount = '';
-
-          this.$store.dispatch('getPosition');
-          this.$store.dispatch('getWithdrawable');
-          this.$store.dispatch('getBalances');
-        } else {
-          this.showError('Failed', {
-            tx: buyTxHash,
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-      this.submitting = false;
     },
   },
 };

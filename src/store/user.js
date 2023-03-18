@@ -157,6 +157,7 @@ const user = {
               if (moment(item.time * 1000).isAfter(moment().subtract(config.debug ? 9 : 365, config.debug ? 'hours' : 'days'))) {
                 return item.amount.add(prev);
               }
+              return prev;
             }, 0),
           });
         }

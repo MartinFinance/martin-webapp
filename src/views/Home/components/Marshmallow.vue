@@ -33,9 +33,16 @@
           </div>
           <div class="slider">
             <Claim
+              v-if="slideType === 'claim'"
               :type="type"
               @change-step="onChangeStep"
             />
+            <Reinvest
+              v-if="slideType === 'reinvest'"
+              :type="type"
+              @change-step="onChangeStep"
+            >
+            </Reinvest>
           </div>
         </div>
       </div>
@@ -49,6 +56,7 @@ import SubscribeSelect from './SubscribeSelect.vue';
 import Subscribe from './Subscribe.vue';
 import MyAssets from './MyAssets.vue';
 import Claim from './Claim.vue';
+import Reinvest from './Reinvest.vue';
 
 export default {
   components: {
@@ -56,6 +64,7 @@ export default {
     Subscribe,
     MyAssets,
     Claim,
+    Reinvest,
   },
   mixins: [toastMixin],
 
@@ -63,6 +72,8 @@ export default {
     return {
       step: 1,
       type: 0,
+
+      slideType: 'claim', // 'reinvest'
     };
   },
 
@@ -72,8 +83,6 @@ export default {
 
   watch: {
     'user.positionOpened': function (val) {
-
-      console.log(val)
       if (val) {
         this.step = 3;
       }
@@ -111,8 +120,9 @@ export default {
     onPrevTwo() {
       this.step = 1;
     },
-    onChangeStep(val) {
+    onChangeStep(val, slideType = 'claim') {
       this.step = val;
+      this.slideType = slideType;
     },
     changeInviteCard(id) {
       this.active = id;
