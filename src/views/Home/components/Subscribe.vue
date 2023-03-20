@@ -603,6 +603,12 @@ export default defineComponent({
     // padding-left: 32px;
   }
 
+  .row-tip {
+    .content {
+      margin-left: 0;
+    }
+  }
+
   .btn-wrapper {
       margin-top: 24px;
     }

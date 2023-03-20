@@ -16,30 +16,34 @@
             </div>
 
             <template v-if="active === 1">
-              <table class="reward-table">
-                <thead class="table-head">
-                  <tr>
-                    <th>Date</th>
-                    <th>Product</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <template v-if="subscriptionList.length">
-                    <tr class="table-row" v-for="item in subscriptionList" :key="item.time + 0">
-                      <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
-                      <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
-                      <td>$ {{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
+              <div class="table-wrapper">
+                <table class="reward-table">
+                  <thead class="table-head">
+                    <tr>
+                      <th>Date</th>
+                      <th>Product</th>
+                      <th>Value</th>
                     </tr>
-                  </template>
-                  <tr v-else class="table-row empty-row" >
-                    <td colspan="3">No Data</td>
-                  </tr>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    <template v-if="subscriptionList.length">
+                      <tr class="table-row" v-for="item in subscriptionList" :key="item.time + 0">
+                        <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
+                        <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
+                        <td>$ {{ item.changedAmount / 10 ** user.usdDecimals | toFixed }}</td>
+                      </tr>
+                    </template>
+                    <tr v-else class="table-row empty-row" >
+                      <td colspan="3">No Data</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </template>
 
             <template v-if="active === 2">
+              <div class="table-wrapper">
+
               <table class="reward-table">
                 <thead class="table-head">
                   <tr>
@@ -61,9 +65,12 @@
                   </tr>
                 </tbody>
               </table>
+              </div>
             </template>
 
             <template v-if="active === 3">
+              <div class="table-wrapper">
+
               <table class="reward-table">
                 <thead class="table-head">
                   <tr>
@@ -89,6 +96,7 @@
                   </tr>
                 </tbody>
               </table>
+              </div>
             </template>
         </div>
       </b-modal>
@@ -269,6 +277,11 @@ export default {
     margin-top: 20px;
   }
 
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
   .table-head {
     background: #FFDF90;
     height: 58px;
@@ -330,8 +343,8 @@ export default {
       // white-space: nowrap;
       // border-bottom: 1px solid #FFDF90;;
       td {
-        white-space: break-spaces;
-        word-break: break-all;
+        // white-space: break-spaces;
+        // word-break: break-all;
       }
     }
 

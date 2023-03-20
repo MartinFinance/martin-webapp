@@ -53,8 +53,8 @@ export default {
       active: '',
       list: [
         {
-          title: 'How to be considered a successful invitation？',
-          desc: 'The referee links the wallet for the first time through the link of the inviter, and successfully subscribe a transaction, it will be determined that the invitation is successful',
+          title: 'How to be considered a successful referral?',
+          desc: 'The referee links the wallet for the first time through the link of the inviter, and successfully subscribe a transaction, it will be determined that the referral is successful',
         },
         {
           title: 'How to earn income through Regular Interest？',
@@ -73,7 +73,7 @@ export default {
           desc: 'Global dividend:After the inviter reaches level 5, he can get 5% of the income of all referees. Here, the referee\'s income refers to the part of the referee\'s own income from the invitation. <br> Qualification for dividends: upgrade to level 5 inviter',
         },
         {
-          title: 'How to upgrade to the next level inviter？',
+          title: 'How to upgrade to the next level referral?',
           desc: 'Upgrade to the next level by inviting at least 2 direct referees',
         },
         {

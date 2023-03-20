@@ -18,29 +18,31 @@
             I am tooltip <b>component</b> content!
           </b-tooltip>
         </div>
-        <table>
-          <thead class="table-head">
-            <tr>
-              <th>Referee's address</th>
-              <th>Level</th>
-              <th>Inviter's address</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template v-if="currentList.length">
-              <tr class="table-row" v-for="item in currentList">
-                <td>{{ item.addr | ellipsis }}</td>
-                <td>{{ item.level + 1 }}</td>
-                <td>{{ item.inviter | ellipsis }}</td>
-                <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
+        <div class="table-wrapper">
+          <table>
+            <thead class="table-head">
+              <tr>
+                <th>Referee's address</th>
+                <th>Level</th>
+                <th>Inviter's address</th>
+                <th>Date</th>
               </tr>
-            </template>
-            <tr v-else class="table-row empty-row" >
-                <td colspan="4">No Data</td>
-              </tr>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <template v-if="currentList.length">
+                <tr class="table-row" v-for="item in currentList">
+                  <td>{{ item.addr | ellipsis }}</td>
+                  <td>{{ item.level + 1 }}</td>
+                  <td>{{ item.inviter | ellipsis }}</td>
+                  <td>{{ item.time * 1000 | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
+                </tr>
+              </template>
+              <tr v-else class="table-row empty-row" >
+                  <td colspan="4">No Data</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
         <!-- v-if="user.invitees.length > pageSize" -->
 <!--  -->
         <Pagination
@@ -172,8 +174,14 @@ h2 {
   }
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 table {
   font-family: ArialRoundedMTBold;
+  white-space: nowrap;
 }
 
 .table-head {
@@ -195,7 +203,6 @@ table {
   }
   border-bottom: 1px solid #FFDF90;;
 }
-
 
 .empty-row {
     text-align: center;
@@ -243,21 +250,21 @@ table {
 
   .table-head {
     th {
-      padding: 0 4px;
-      font-size: 12px;
-      &:nth-child(3) {
-        width: 100px;
-      }
+      padding: 0 8px;
+      // font-size: 12px;
+      // &:nth-child(3) {
+      //   width: 100px;
+      // }
     }
   }
 
   .table-row {
       td {
-        padding: 14px 4px;
-        font-size: 12px;
-        &:nth-child(3) {
-          width: 100px;
-        }
+        padding: 10px 8px;
+        // font-size: 12px;
+        // &:nth-child(3) {
+        //   width: 100px;
+        // }
       }
   }
 }

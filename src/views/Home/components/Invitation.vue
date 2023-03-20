@@ -1,7 +1,7 @@
 <template>
   <div class="invitation" id="InvitationRebate">
      <b-container fluid="lg" >
-      <h2>Referral & Rebate</h2>
+      <h2>Referral&Rebate</h2>
       <div class="sub-title">Invite friends, earn more income, and qualify for global dividends</div>
 
       <div class="rules-container">
@@ -36,7 +36,7 @@
 
           <div class="rules-item">
             Level 5 agents receive
-            <em>15%</em>
+            <em>5%</em>
             of the wealth management income directly under Level 1
           </div>
         </div>

@@ -88,6 +88,7 @@ interest payment time：
     <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
+      <div class="tip" v-if="user.period === 0">Tips:0.5% handling fee will be deducted for reinvest.</div>
       <b-button
             class="subscribe-btn"
             variant="primary"
@@ -496,6 +497,12 @@ export default defineComponent({
 
   .right-section {
     // padding-left: 32px;
+  }
+
+  .row-tip {
+    .content {
+      margin-left: 0;
+    }
   }
 
   .btn-wrapper {
