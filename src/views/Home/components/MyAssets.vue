@@ -256,6 +256,9 @@ export default {
     td {
       padding: 18px 30px;
       font-weight: bold;
+      &:nth-child(2) {
+        word-break: break-all;
+      }
     }
     border-bottom: 1px solid #FFDF90;;
   }
@@ -267,6 +270,18 @@ export default {
 
   .card  {
     display: none;
+  }
+
+  .table-head {
+    th {
+      padding: 0 8px;
+    }
+  }
+  .table-row {
+    font-size: 14px;
+    td {
+      padding: 4px 8px;
+    }
   }
 
  .btn-wrapper {
@@ -286,5 +301,7 @@ export default {
     padding: 0.25rem 2rem;
   }
 }
+
+
 
 </style>

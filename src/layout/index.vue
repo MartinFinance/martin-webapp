@@ -199,6 +199,25 @@ export default {
       padding: 1rem 30px;
     }
   }
+
+  @media (max-width: 992px) {
+
+    .history-modal {
+      & .modal-dialog {
+        margin-top: 120px;
+      }
+      & .modal-header {
+        padding: 1rem 16px;
+        border-bottom: none;
+      }
+      & .modal-title {
+        font-size: 36px;
+      }
+      & .modal-body {
+        padding: 1rem 16px;
+      }
+    }
+  }
 </style>
 <style lang="scss" scoped>
   // @import "~@/styles/mixin.scss";
@@ -265,12 +284,14 @@ export default {
     font-size: 14px;
     color: #333333;
     white-space: nowrap;
+    border-bottom: 1px solid #FFDF90;;
     td {
       padding: 18px 30px;
       font-weight: bold;
       width: 30%;
+      // white-space: break-spaces;
+      // word-break: break-all;
     }
-    border-bottom: 1px solid #FFDF90;;
   }
 
   .empty-row {
@@ -302,6 +323,17 @@ export default {
   }
 
   @media (max-width: 992px) {
+
+    .table-row {
+      // font-size: 14px;
+      // color: #333333;
+      // white-space: nowrap;
+      // border-bottom: 1px solid #FFDF90;;
+      td {
+        white-space: break-spaces;
+        word-break: break-all;
+      }
+    }
 
     .invite-head {
       font-size: 14px;
@@ -336,4 +368,8 @@ export default {
       }
     }
   }
+
+  // & .modal-body {
+  //     padding: 1rem 30px;
+  //   }
 </style>
