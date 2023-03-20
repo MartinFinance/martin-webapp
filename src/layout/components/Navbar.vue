@@ -7,7 +7,7 @@
     fixed="top"
   >
 
-    <b-container fluid="lg">
+    <b-container fluid="lg" v-click-outside="onClickOutside">
       <b-navbar-brand href="/">
         <img class="logo" src="@/assets/img/logo@2x.png" alt="">
       </b-navbar-brand>
@@ -17,7 +17,7 @@
         target="nav-collapse"
       ></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
+      <b-collapse v-model="expand" is-nav  >
         <b-navbar-nav>
           <b-nav-item :active="active === 'Home'" href="#" @click.prevent="toAnchor">Home</b-nav-item>
           <b-nav-item :active="active === 'Earn'"  href="#Earn" @click.prevent="toAnchor">Earn</b-nav-item>
@@ -152,6 +152,10 @@ export default {
     onToggleClick() {
       this.expand = !this.expand;
     },
+    onClickOutside() {
+      this.expand = false;
+    },
+
     changeLang(lang) {
       setLang(lang);
       window.location.reload();

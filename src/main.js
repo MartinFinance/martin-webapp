@@ -8,7 +8,7 @@ import toastMixin from '@/mixin/toastMixin';
 import i18n from '@/i18n';
 import { getLang } from '@/common/lang';
 import config from '@/config';
-
+import vClickOutside from 'v-click-outside';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -18,6 +18,7 @@ import './filters/trimAddress';
 
 import '@/styles/theme-overrides/index.scss';
 
+Vue.use(vClickOutside);
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
@@ -59,7 +60,6 @@ store.dispatch('getRange');
       window.location.reload();
     });
 
-
     // For now, 'eth_accounts' will continue to always return an array
     window.ethereum
       .request({ method: 'eth_accounts' })
@@ -81,7 +81,6 @@ store.dispatch('getRange');
     });
   }
 })();
-
 
 const lang = getLang();
 if (['zh', 'en'].includes(lang)) {
