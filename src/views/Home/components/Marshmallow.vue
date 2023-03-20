@@ -9,6 +9,7 @@
         <div
           class="slider-view"
           :class="{
+            'step-1': step === 1,
             'step-2': step === 2,
             'step-3': step === 3,
             'step-4': step === 4,
@@ -174,43 +175,60 @@ export default {
     overflow: hidden;
   }
 
-  .slider-view {
-    display: flex;
-    flex-wrap: nowrap;
-    // transform: translate(-100%, 0);
-    transition: all 0.5s ease;
-    &.step-2 {
-      transform: translate(-100%, 0);
-    }
-    &.step-3 {
-      transform: translate(-200%, 0);
-    }
-    &.step-4 {
-      transform: translate(-300%, 0);
-    }
-  }
 
   .slider {
     width: 100%;
     flex-shrink: 0;
+    height: 0;
+    // display: none;
+  }
+  .slider-view {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: all 0.5s ease;
+    &.step-1 {
+      transform: translate(0, 0);
+      & .slider:nth-child(1) {
+        height: auto;
+      }
+    }
+    &.step-2 {
+      transform: translate(-100%, 0);
+      & .slider:nth-child(2) {
+        height: auto;
+      }
+    }
+    &.step-3 {
+      transform: translate(-200%, 0);
+      & .slider:nth-child(3) {
+        height: auto;
+      }
+    }
+    &.step-4 {
+      transform: translate(-300%, 0);
+      & .slider:nth-child(4) {
+        height: auto;
+      }
+    }
   }
 
-    .connect-btn,
-    .subscribe-btn {
-      // margin-top: 50px;
-      height: 56px;
-      padding: 0.25rem 3rem;
-      font-weight: bold;
-      background: #FFB600 !important;
-      color: #292929 !important;
-      line-height: 30px;
-      border-radius: 28px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .claim-btn {
-      margin-top: 30px;
-    }
+
+  .connect-btn,
+  .subscribe-btn {
+    // margin-top: 50px;
+    height: 56px;
+    padding: 0.25rem 3rem;
+    font-weight: bold;
+    background: #FFB600 !important;
+    color: #292929 !important;
+    line-height: 30px;
+    border-radius: 28px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .claim-btn {
+    margin-top: 30px;
+  }
 
   .reward-table {
     width: 100%;
