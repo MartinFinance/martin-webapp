@@ -45,7 +45,7 @@ interest payment time：
 
         <div class="content-row row-tip">
           <div class="content">
-            = {{ (amount * user.dogePrice / 10 ** user.dogePriceDecimals) | toFixed(2) }} $
+            = $ {{ (amount * user.dogePrice / 10 ** user.dogePriceDecimals) | toFixed(2) }}
           </div>
         </div>
       </b-col>
