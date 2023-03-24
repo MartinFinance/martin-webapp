@@ -15,7 +15,7 @@
           <em> {{ user.inviterGrade >= 4 ? 'Yes' : 'No'}}</em>
 
           <b-tooltip target="tooltip-target-007" triggers="hover">
-            I am tooltip <b>component</b> content!
+            Become a level 5 recommender to get global dividends
           </b-tooltip>
         </div>
         <div class="table-wrapper">
