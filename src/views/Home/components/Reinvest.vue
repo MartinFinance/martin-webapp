@@ -103,10 +103,10 @@ interest payment time：
           animation="spin"
         ></b-icon>
       </b-button>
-      <b-button
+      <!-- <b-button
             class="cancel-btn"
             @click="onCancel"
-        >Cancel</b-button>
+        >Cancel</b-button> -->
     </div>
   </b-row>
   </div>
@@ -138,18 +138,13 @@ export default defineComponent({
       invitee: config.addressZero,
       submitting: false,
       amount: '',
+      time: Date.now()
     };
   },
 
   computed: {
     ...mapState(['user']),
 
-    time() {
-      if (this.user.events.length > 0) {
-        return this.user.events[0].time * 1000;
-      }
-      return '';
-    },
     claimable() {
       return Math.floor(this.user.withdrawable / this.user.dogePrice);
     },
