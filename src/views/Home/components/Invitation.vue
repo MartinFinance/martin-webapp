@@ -1,8 +1,8 @@
 <template>
   <div class="invitation" id="InvitationRebate">
      <b-container fluid="lg" >
-      <h2>Referral&Rebate</h2>
-      <div class="sub-title">Invite friends, earn more income, and qualify for global dividends</div>
+      <h2>Referral & Rebate</h2>
+      <div class="sub-title">Referral friends, earn more income, and qualify for global dividends</div>
 
       <div class="rules-container">
         <div class="rules-title">
@@ -46,7 +46,7 @@
         <b-col class="left" lg="6" order="1" order-md="1">
           <div class="invite-card">
             <div class="invite-head">
-              <span :class="{ active: active === 1}" @click="changeInviteCard(1)">Invite Friends</span>
+              <span :class="{ active: active === 1}" @click="changeInviteCard(1)">Referral friends</span>
               <!-- <span :class="{ active: active === 2}" @click="changeInviteCard(2)">Reward</span> -->
             </div>
 
@@ -62,7 +62,7 @@
                 <b-button
                   class="invite-btn copy-btn"
                   variant="primary">
-                  Invite friends
+                  Referral friends
                 </b-button>
               </template>
 

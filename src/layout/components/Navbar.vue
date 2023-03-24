@@ -21,7 +21,7 @@
         <b-navbar-nav>
           <b-nav-item :active="active === 'Home'" href="#" @click.prevent="toAnchor">Home</b-nav-item>
           <b-nav-item :active="active === 'Earn'"  href="#Earn" @click.prevent="toAnchor">Earn</b-nav-item>
-          <b-nav-item :active="active === 'InvitationRebate'"  href="#InvitationRebate" @click.prevent="toAnchor">Invitation rebate</b-nav-item>
+          <b-nav-item :active="active === 'InvitationRebate'"  href="#InvitationRebate" @click.prevent="toAnchor">Referral & rebate</b-nav-item>
           <b-nav-item :active="active === 'FAQ'"  href="#FAQ" @click.prevent="toAnchor">FAQ</b-nav-item>
         </b-navbar-nav>
 

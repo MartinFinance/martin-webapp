@@ -54,31 +54,31 @@ export default {
       list: [
         {
           title: 'How to be considered a successful referral?',
-          desc: 'The referee links the wallet for the first time through the link of the inviter, and successfully subscribe a transaction, it will be determined that the referral is successful',
+          desc: "To be considered a successful referral, the referee must link their wallet for the first time through the referrer's link and successfully subscribe to a transaction.",
         },
         {
           title: 'How to earn income through Regular Interest？',
-          desc: 'The subscription period for Regular Interest products is 30 days, Pay interest only when due, No interest for redemption before maturity. It should be noted that no matter whether it is due or not, a 0.5% handling fee will be charged for redemption',
+          desc: `To earn income through Regular Interest, one can subscribe to Regular Interest products for a 30-day period and receive interest only when it is due. No interest will be given for redemption before maturity. It's important to note that a 0.5% handling fee will be charged for redemption, regardless of whether it's due or not.`,
         },
         {
-          title: 'How to earn income through Daily Interest？',
-          desc: 'The subscription cycle of Daily Interest products is 365 days. After the subscription is successful, Receive interest the next day, and the interest will stop immediately after redemption. It should be noted that no matter whether it expires or not, a 0.5% handling fee will be charged for redemption, and 10% of the redemption funds will be automatically reinvested',
+          title: 'How to earn income through Daily Interest? ',
+          desc: `To earn income through Daily Interest, one can subscribe to Daily Interest products for a cycle of 365 days. After successful subscription, interest will be received the next day, and it will stop immediately after redemption. It's important to note that a 0.5% handling fee will be charged for redemption, regardless of whether it's expired or not. Additionally, 10% of the redemption funds will be automatically reinvested.`,
         },
         {
-          title: 'What is the burn rule？',
-          desc: 'The rebate of the inviter depends on the minimum subscribe quantity of the inviter and the invitee. For example, if Bob invites Alice, Alice subscribe 20,000 DOGE, and Bob subscribe 10,000 DOGE, then the rebate for Bob as the inviter will be calculated according to 10,000 DOGE, because Bob and Among Alice, Bob has the least number of subscriptions',
+          title: 'What is the burn rule?',
+          desc: `The referrer's rebate depends on the minimum number of subscriptions between the referrer and the referee. For example, if Bob recommends Alice, and Alice subscribes for 20,000 DOGE while Bob subscribes for 10,000 DOGE, then the rebate for Bob as the referrer will be calculated at 10,000 DOGE because Bob has the least number of subscriptions among Bob and Alice.`,
         },
         {
           title: 'What is a global dividend and how do I qualify for a dividend?',
-          desc: 'Global dividend:After the inviter reaches level 5, he can get 5% of the income of all referees. Here, the referee\'s income refers to the part of the referee\'s own income from the invitation. <br> Qualification for dividends: upgrade to level 5 inviter',
+          desc: `A global dividend is a 5% income earned by level 5 referrers from all of their referees' income. Here, the referee's income refers to the portion of the referee's own income from referrals. To qualify for a dividend, one must upgrade to level 5 referrer and maintain a current subscription amount of no less than $20,000.`,
         },
         {
-          title: 'How to upgrade to the next level referral?',
-          desc: 'Upgrade to the next level by inviting at least 2 direct referees',
+          title: 'How to upgrade to the next level referees？',
+          desc: `Advance to the next level by referring at least 2 direct referees.`,
         },
         {
-          title: 'What is subscription limit?',
-          desc: 'The minimum subscription limit is $600 worth of DOGE <br> The maximum amount of DOGE that can be subscribed is $1000',
+          title: 'What is the subscription limit? ',
+          desc: 'The minimum subscription limit is $1000 worth of DOGE, while the maximum amount of DOGE that can be subscribed is $20000.',
         },
       ],
     };

@@ -24,7 +24,7 @@
               <tr>
                 <th>Referee's address</th>
                 <th>Level</th>
-                <th>Inviter's address</th>
+                <th>Referrer's address</th>
                 <th>Date</th>
               </tr>
             </thead>
