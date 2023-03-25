@@ -140,7 +140,7 @@ export default {
 
       subscriptionList: (state) => {
         if (state.user.events) {
-          return state.user.events.filter((item) => item.eveType === 0 || item.eveType === 1).sort((a, b) => b.time - a.time);
+          return state.user.events.filter((item) => item.eveType === 0 || item.eveType === 1 || item.eveType === 3).sort((a, b) => b.time - a.time);
         }
         return [];
       },

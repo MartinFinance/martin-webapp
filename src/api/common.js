@@ -37,16 +37,6 @@ export function logout() {
  * @param {*}
  */
 export async function getTree() {
-  // export async function getgit (owner, repo, path) {
-  // A function to fetch files from github using the api
-
-  //   return axios({
-  //     // url: 'https://github.com/MartinFinance/martin-merkletreedata/blob/main/amount.json',
-  //     url: '/tree.json',
-  //     baseURL: '/',
-  //     method: 'GET',
-  //   });
-
   const data = await fetch(
     'https://api.github.com/repos/MartinFinance/martin-merkletreedata/contents/amount.json',
     {
