@@ -23,7 +23,7 @@ interest payment time：
         <div class="content-row row-product">
           <div class="label label-short">APR: </div>
           <div class="content">
-            <span><em>{{ user.period === 0 ? '120.00%+' : '200.00%+'}}</em></span>
+            <span><em>{{ user.period === 0 ? '72.00%+' : '120.00%+'}}</em></span>
           </div>
         </div>
 

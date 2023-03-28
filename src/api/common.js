@@ -1,4 +1,5 @@
 import axios from '@/common/axios';
+import config from '@/config';
 
 /**
  * 登录
@@ -41,7 +42,7 @@ export async function getTree() {
     'https://api.github.com/repos/MartinFinance/martin-merkletreedata/contents/amount.json',
     {
       headers: {
-        Authorization: 'token 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',
+        Authorization: config.githubToken,
       },
     },
   )
@@ -50,7 +51,7 @@ export async function getTree() {
       `https://api.github.com/repos/MartinFinance/martin-merkletreedata/git/blobs/${d.sha}`,
       {
         headers: {
-          Authorization: 'token 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',
+          Authorization: config.githubToken,
         },
       },
     ))
@@ -81,7 +82,7 @@ export async function getTree() {
 //     'https://api.github.com/repos/MartinFinance/martin-merkletreedata/contents/0x74cfa61e62232a4691c7cb2F108f2EFE54117fD5.json',
 //     {
 //       headers: {
-//         Authorization: 'token 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',
+//         Authorization: config.githubToken,
 //       },
 //     },
 //   )
@@ -101,7 +102,7 @@ export async function getHistory(address) {
       `https://api.github.com/repos/MartinFinance/martin-merkletreedata/contents/${address}.json`,
       {
         headers: {
-          Authorization: 'token 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',
+          Authorization: config.githubToken,
         },
       },
     )
@@ -112,7 +113,7 @@ export async function getHistory(address) {
             `https://api.github.com/repos/MartinFinance/martin-merkletreedata/git/blobs/${d.sha}`,
             {
               headers: {
-                Authorization: 'token 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',
+                Authorization: config.githubToken,
               },
             },
           );

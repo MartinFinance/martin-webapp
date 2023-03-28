@@ -16,7 +16,7 @@ interest payment time：
           <div class="label">Product：</div>
           <div class="content">
             <span>{{ type === 0 ? 'Regular Interest' : 'Daily Interest'}}</span>
-            <span>APR: <em>{{ type === 0 ? '120.00%+' : '200.00%+'}}</em></span>
+            <span>APR: <em>{{ type === 0 ? '72.00%+' : '120.00%+'}}</em></span>
           </div>
         </div>
 

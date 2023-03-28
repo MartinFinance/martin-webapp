@@ -15,7 +15,7 @@
         </div>
         <div  class="card-middle">
           <span>APR: </span>
-          <span> {{ user.period === 0 ? '120.00%+' : '200.00%+' }}</span>
+          <span> {{ user.period === 0 ? '72.00%+' : '120.00%+' }}</span>
         </div>
         <div  class="card-bottom">
           <span>{{ user.period === 0 ? 'Pay interest only when due' : 'Receive interest the next day' }}</span>
