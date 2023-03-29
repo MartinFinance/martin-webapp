@@ -189,10 +189,10 @@ export default defineComponent({
 
     max() {
       if (this.user.positionOpened) {
-        return Math.floor((this.user.max - this.user.depositAmount) / this.user.dogePrice);
+        return Math.ceil((this.user.max - this.user.depositAmount) / this.user.dogePrice);
       }
 
-      return Math.floor(this.user.max / this.user.dogePrice);
+      return Math.ceil(this.user.max / this.user.dogePrice);
     },
 
     interest() {
