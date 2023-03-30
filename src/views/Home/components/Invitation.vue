@@ -18,25 +18,25 @@
           </div>
           <div class="rules-item">
             Level 5 agents receive
-            <em>25%</em>
+            <em>10%</em>
             of the wealth management income directly under Level 4
           </div>
 
           <div class="rules-item">
             Level 5 agents receive
-            <em>15%</em>
+            <em>10%</em>
             of the wealth management income directly under Level 3
           </div>
 
           <div class="rules-item">
             Level 5 agents receive
-            <em>5%</em>
+            <em>10%</em>
             of the wealth management income directly under Level 2
           </div>
 
           <div class="rules-item">
             Level 5 agents receive
-            <em>5%</em>
+            <em>10%</em>
             of the wealth management income directly under Level 1
           </div>
         </div>
@@ -199,7 +199,7 @@ export default {
       this.$store.dispatch('unlockByMetaMask');
     },
     onScrollTo() {
-      const targetElement = document.getElementById('Investment');
+      const targetElement = document.getElementById('Earn');
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: targetPosition,

@@ -68,7 +68,7 @@ interest payment time：
             <div class="timeline">
               <div class="timeline-item">
                 <div class="discribe">Subscription date</div>
-                <div class="time"> {{subscriptionDate }}  08:00:00</div>
+                <div class="time"> {{subscriptionDate }}</div>
               </div>
               <span class="line"></span>
               <div class="timeline-item">
@@ -88,7 +88,6 @@ interest payment time：
     <!-- {{ user }} -->
   <b-row align-h="center">
     <div class="btn-wrapper">
-      <div class="tip">Tips:0.5% handling fee will be deducted for reinvest.</div>
       <b-button
             class="subscribe-btn"
             variant="primary"
@@ -138,7 +137,7 @@ export default defineComponent({
       invitee: config.addressZero,
       submitting: false,
       amount: '',
-      time: Date.now()
+      time: Date.now(),
     };
   },
 
@@ -157,7 +156,7 @@ export default defineComponent({
     },
 
     subscriptionDate() {
-      return moment(this.time).format('yyyy-MM-DD');
+      return moment(this.time).format('yyyy-MM-DD HH:mm:ss');
     },
 
     valueDate() {

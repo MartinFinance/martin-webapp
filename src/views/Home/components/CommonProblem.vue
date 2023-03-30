@@ -70,7 +70,7 @@ export default {
         },
         {
           title: 'What is a global dividend and how do I qualify for a dividend?',
-          desc: `A global dividend is a 5% income earned by level 5 referrers from all of their referees' income. Here, the referee's income refers to the portion of the referee's own income from referrals. To qualify for a dividend, one must upgrade to level 5 referrer and maintain a current subscription amount of no less than $20,000.`,
+          desc: `A global dividend is a 0.5% income earned by level 5 referrers from all of their referees' income. Here, the referee's income refers to the portion of the referee's own income from referrals. To qualify for a dividend, one must upgrade to level 5 referrer and maintain a current subscription amount of no less than $20,000.`,
         },
         {
           title: 'How to upgrade to the next level referees？',

@@ -73,7 +73,9 @@ interest payment time：
         <div class="content-row row-operating">
           <div class="label">Interest payment：</div>
           <div class="content">
-            <div>Pay interest only due</div>
+            <div>
+              {{  type === 0 ? 'Pay interest only due' : 'Daily Interest Payment'}}
+            </div>
           </div>
         </div>
 
@@ -83,7 +85,7 @@ interest payment time：
             <div class="timeline">
               <div class="timeline-item">
                 <div class="discribe">Subscription date</div>
-                <div class="time">{{subscriptionDate}} 08:00:00</div>
+                <div class="time">{{subscriptionDate}}</div>
               </div>
               <span class="line"></span>
               <div class="timeline-item">
@@ -201,16 +203,16 @@ export default defineComponent({
       }
 
       if (this.type === 0) {
-        return Math.floor(this.amount * 0.1);
+        return Math.floor(this.amount * 0.72);
       }
 
       if (this.type === 1) {
-        return Math.floor(this.amount * 2);
+        return Math.floor(this.amount * 1.2);
       }
     },
 
     subscriptionDate() {
-      return moment().format('yyyy-MM-DD');
+      return moment().format('yyyy-MM-DD HH:mm:ss');
     },
 
     valueDate() {

@@ -68,7 +68,7 @@ interest payment time：
             <div class="timeline">
               <div class="timeline-item">
                 <div class="discribe">Subscription date</div>
-                <div class="time"> {{subscriptionDate }}  08:00:00</div>
+                <div class="time"> {{subscriptionDate }}</div>
               </div>
               <span class="line"></span>
               <div class="timeline-item">
@@ -163,7 +163,7 @@ export default defineComponent({
     },
 
     subscriptionDate() {
-      return moment(this.time).format('yyyy-MM-DD');
+      return moment(this.time).format('yyyy-MM-DD HH:mm:ss');
     },
 
     valueDate() {
