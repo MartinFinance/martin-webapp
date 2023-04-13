@@ -42,7 +42,7 @@ export async function getTree() {
     'https://api.github.com/repos/MartinFinance/martin-merkletreedata/contents/amount.json',
     {
       headers: {
-        Authorization: config.githubToken,
+        Authorization: `token ${config.githubToken}`,
       },
     },
   )
@@ -51,7 +51,7 @@ export async function getTree() {
       `https://api.github.com/repos/MartinFinance/martin-merkletreedata/git/blobs/${d.sha}`,
       {
         headers: {
-          Authorization: config.githubToken,
+          Authorization: `token ${config.githubToken}`,
         },
       },
     ))
@@ -102,7 +102,7 @@ export async function getHistory(address) {
       `https://api.github.com/repos/MartinFinance/martin-merkletreedata/contents/${address}.json`,
       {
         headers: {
-          Authorization: config.githubToken,
+          Authorization: `token ${config.githubToken}`,
         },
       },
     )
@@ -113,7 +113,7 @@ export async function getHistory(address) {
             `https://api.github.com/repos/MartinFinance/martin-merkletreedata/git/blobs/${d.sha}`,
             {
               headers: {
-                Authorization: config.githubToken,
+                Authorization: `token ${config.githubToken}`,
               },
             },
           );

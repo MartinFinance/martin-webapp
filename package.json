@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve  --mode test",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "build:test": "cross-env NODE_ENV=production vue-cli-service build --mode test",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -44,6 +45,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
