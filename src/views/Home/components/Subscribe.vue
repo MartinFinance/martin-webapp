@@ -171,9 +171,17 @@ export default defineComponent({
     };
   },
 
-  mounted() {
-    this.getAllowance();
+  watch: {
+    user: {
+      handler() {
+        if (this.user.address) {
+          this.getAllowance();
+        }
+      },
+      immediate: true
+    }
   },
+
   computed: {
     ...mapState(['user']),
     dogeAmount() {
