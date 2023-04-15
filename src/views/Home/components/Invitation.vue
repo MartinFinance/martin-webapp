@@ -12,32 +12,27 @@
 
         <div class="rules-list">
           <div class="rules-item">
-            Level 5 agents receive
+            Level 1 referral reward:
             <em>100%</em>
-            of the wealth management income directly under Level 5
           </div>
           <div class="rules-item">
-            Level 5 agents receive
+            Level 2 referral reward:
             <em>10%</em>
-            of the wealth management income directly under Level 4
           </div>
 
           <div class="rules-item">
-            Level 5 agents receive
+            Level 3 referral reward:
             <em>10%</em>
-            of the wealth management income directly under Level 3
           </div>
 
           <div class="rules-item">
-            Level 5 agents receive
+            Level 4 referral reward:
             <em>10%</em>
-            of the wealth management income directly under Level 2
           </div>
 
           <div class="rules-item">
-            Level 5 agents receive
+            Level 5 referral reward:
             <em>10%</em>
-            of the wealth management income directly under Level 1
           </div>
         </div>
       </div>
