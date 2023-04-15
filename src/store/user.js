@@ -220,8 +220,9 @@ const user = {
             jsonAmount,
           });
         } else {
+          const withdrawable = await martinDepositContract.withdrawableAmount(state.address, 0);
           commit('UPDATE_STATE', {
-            withdrawable: state.period === 1 ? 0 : state.depositAmount - state.withdrawAmount,
+            withdrawable: state.period === 1 ? 0 : withdrawable,
             jsonAmount: 0,
           });
         }
