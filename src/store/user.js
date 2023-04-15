@@ -62,31 +62,36 @@ const user = {
 
   actions: {
     async handleAccountsChanged({ commit, dispatch, state }, accounts) {
-      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+      try {
+        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+        if (accounts.length === 0) {
+          commit('UPDATE_STATE', {
+            address: '',
+            chainId,
+            loaded: true,
+          });
+        } else if (accounts[0] !== state.address) {
+          if (state.address) {
+            window.location.reload();
+          }
+          commit('UPDATE_STATE', {
+            address: accounts[0],
+            chainId,
+            loaded: true,
+          });
 
-      if (accounts.length === 0) {
-        commit('UPDATE_STATE', {
-          address: '',
-          chainId,
-          loaded: true,
-        });
-      } else if (accounts[0] !== state.address) {
-        if (state.address) {
-          window.location.reload();
+          dispatch('getBalances');
+          dispatch('getDecimals');
+          dispatch('getHistory');
+          dispatch('getInviterGrade');
+
+          await dispatch('getPosition');
+          dispatch('getWithdrawable');
         }
+      } catch (error) {
         commit('UPDATE_STATE', {
-          address: accounts[0],
-          chainId,
           loaded: true,
         });
-
-        dispatch('getBalances');
-        dispatch('getDecimals');
-        dispatch('getHistory');
-        dispatch('getInviterGrade');
-
-        await dispatch('getPosition');
-        dispatch('getWithdrawable');
       }
     },
 
