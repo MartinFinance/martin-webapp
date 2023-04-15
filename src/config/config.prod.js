@@ -1,4 +1,5 @@
 export default {
+  mode: 'prod',
   webUrl: 'https://steep-math-6995.on.fleek.co',
   debug: true,
 
