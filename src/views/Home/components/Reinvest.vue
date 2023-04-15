@@ -37,8 +37,8 @@ interest payment time：
 
             <div class="content-right">
             <span class="max-btn" @click="amount = max">MAX</span>
-             <img src="@/assets/img/small-logo@2x.png" alt="">
-              <span class="unit">DOGE</span>
+             <!-- <img src="@/assets/img/small-logo@2x.png" alt="">
+              <span class="unit">DOGE</span> -->
             </div>
           </div>
         </div>
@@ -192,12 +192,12 @@ export default defineComponent({
       }
 
       if (this.amount < this.min) {
-        this.showError(`The minimum claim is ${this.min} DOGE`);
+        this.showError(`The minimum claim is ${this.min} USDT`);
         return;
       }
 
       if (this.amount > this.max) {
-        this.showError(`The maximum claim is ${this.min} DOGE`);
+        this.showError(`The maximum claim is ${this.min} USDT`);
         return;
       }
       // const amount = this.user.withdrawable;

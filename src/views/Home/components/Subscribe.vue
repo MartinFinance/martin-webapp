@@ -31,8 +31,8 @@ interest payment time：
 
             <div class="content-right">
               <span class="max-btn" @click="amount = max">MAX</span>
-              <img src="@/assets/img/small-logo@2x.png" alt="">
-              <span class="unit">DOGE</span>
+              <!-- <img src="@/assets/img/small-logo@2x.png" alt="">
+              <span class="unit">DOGE</span> -->
             </div>
           </div>
         </div>
@@ -56,15 +56,15 @@ interest payment time：
         <div class="content-row row-range" >
           <div class="label">Operating range：</div>
           <div class="content">
-            <span>Min：{{min}} DOGE</span>
-            <span>Max: {{max}} DOGE</span>
+            <span>Min：{{min}} USDT</span>
+            <span>Max: {{max}} USDT</span>
           </div>
         </div>
 
         <div class="content-row row-interest">
           <div class="label">Estimated interest：</div>
           <div class="content">
-            <em>{{interest}} DOGE</em>
+            <em>{{interest}} USDT</em>
           </div>
         </div>
       </b-col>
@@ -283,7 +283,7 @@ export default defineComponent({
       const { amount } = this;
 
       if (amount < this.min) {
-        this.showError(`The minimum subscribe is ${this.min} DOGE`);
+        this.showError(`The minimum subscribe is ${this.min} USDT`);
         return;
       }
 

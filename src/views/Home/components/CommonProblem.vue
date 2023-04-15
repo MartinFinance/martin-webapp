@@ -66,7 +66,7 @@ export default {
         },
         {
           title: 'What is the burn rule?',
-          desc: `The referrer's rebate depends on the minimum number of subscriptions between the referrer and the referee. For example, if Bob recommends Alice, and Alice subscribes for 20,000 DOGE while Bob subscribes for 10,000 DOGE, then the rebate for Bob as the referrer will be calculated at 10,000 DOGE because Bob has the least number of subscriptions among Bob and Alice.`,
+          desc: `The referrer's rebate depends on the minimum number of subscriptions between the referrer and the referee. For example, if Bob recommends Alice, and Alice subscribes for 20,000 USDT while Bob subscribes for 10,000 USDT, then the rebate for Bob as the referrer will be calculated at 10,000 USDT because Bob has the least number of subscriptions among Bob and Alice.`,
         },
         {
           title: 'What is a global dividend and how do I qualify for a dividend?',
@@ -78,7 +78,7 @@ export default {
         },
         {
           title: 'What is the subscription limit? ',
-          desc: 'The minimum subscription limit is $1000 worth of DOGE, while the maximum amount of DOGE that can be subscribed is $20000.',
+          desc: 'The minimum subscription limit is $1000 worth of USDT, while the maximum amount of USDT that can be subscribed is $20000.',
         },
       ],
     };

@@ -5,7 +5,7 @@
     <div class="assets-wrapper">
       <div class="total">
         <!-- {{ user }} -->
-        DOGE: {{ Math.round(user.dogeBalance / (10 ** user.dogeDecimals)) }}
+        USDT: {{ Math.round(user.dogeBalance / (10 ** user.dogeDecimals)) }}
       </div>
 
       <div class="card">
