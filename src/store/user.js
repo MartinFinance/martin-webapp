@@ -207,7 +207,13 @@ const user = {
     },
 
     async getWithdrawable({ state, commit }) {
-      const tree = await getTree();
+      let tree;
+
+      try {
+        tree = await getTree();
+      } catch (error) {
+        console.log(error);
+      }
 
       if (tree) {
         const target = tree.values.find((item) => item.value[0].toLowerCase() === state.address.toLowerCase());
@@ -220,12 +226,18 @@ const user = {
             jsonAmount,
           });
         } else {
-          const withdrawable = await martinDepositContract.withdrawableAmount(state.address, 0);
+          // const withdrawable = await martinDepositContract.withdrawableAmount(state.address, 0);
           commit('UPDATE_STATE', {
-            withdrawable: state.period === 1 ? 0 : withdrawable,
+            withdrawable: state.period === 1 ? 0 : state.depositAmount - state.withdrawAmount,
             jsonAmount: 0,
           });
         }
+      } else {
+        const withdrawable = await martinDepositContract.withdrawableAmount(state.address, 0);
+        commit('UPDATE_STATE', {
+          withdrawable: state.period === 1 ? 0 : withdrawable,
+          jsonAmount: 0,
+        });
       }
     },
 
