@@ -71,7 +71,7 @@
                   You have not been invited
                   <img id="tooltip-target" class="question" src="@/assets/img/question@2x.png" alt="">
                   <b-tooltip target="tooltip-target" triggers="hover">
-                    Hold DOGE financial management
+                    Hold USDT financial management
                   </b-tooltip>
                 </div>
 
