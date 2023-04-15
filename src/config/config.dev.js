@@ -35,6 +35,6 @@ export default {
   // appDownload: '这是下载二维码',
 
   DogeTokenAddress: '0xbb39B0C86BF117e3dd52BE8A51191353eda0cdf9',
-  MartinDepositAddress: '0xCBd0841478eb3581575520f998c02909f975fdF5',
+  MartinDepositAddress: '0x6cfD8691b9Db91Eebe1F5edc15Fa5A7E09d19975',
   USDTAddress: '0x33eAc2b028e351111493b95f6dEe31E58291B865',
 };

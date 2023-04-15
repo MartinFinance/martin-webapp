@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve  --mode test",
-    "build": "cross-env NODE_ENV=production vue-cli-service build",
-    "build:test": "cross-env NODE_ENV=production vue-cli-service build --mode test",
+    "build": "cross-env VUE_APP_BUILD_ENV=production vue-cli-service build",
+    "build:test": "cross-env VUE_APP_BUILD_ENV=test vue-cli-service build --mode test",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

@@ -9,9 +9,9 @@ import prodConfig from './config.prod';
 
 let config = {};
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.VUE_APP_BUILD_ENV === 'development') {
   config = devConfig;
-} else if (process.env.NODE_ENV === 'test') {
+} else if (process.env.VUE_APP_BUILD_ENV === 'test') {
   config = testConfig;
 } else {
   config = prodConfig;
