@@ -76,18 +76,25 @@
 }
 
 @media (max-width: 992px) {
+  // .banner {
+  //   background: url(~@/assets/img/small-banner@2x.png) center center / auto 100% no-repeat;
+  // }
   .banner {
+    height: 580px;
+    padding-top: 160px;
+    margin-top: -72px;
     background: url(~@/assets/img/small-banner@2x.png) center center / auto 100% no-repeat;
+    z-index: -1;
   }
 
   .left-content {
     & h3 {
-      font-size: 64px;
+      font-size: 32px;
       font-weight: bold;
     }
     & p {
-      font-size: 24px;
-      line-height: 24px;
+      font-size: 18px;
+      line-height: 18px;
     }
 
     & em {

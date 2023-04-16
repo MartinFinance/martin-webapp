@@ -2,6 +2,9 @@ export default {
   mode: 'test',
   webUrl: 'https://steep-math-6995.on.fleek.co',
   debug: true,
+  twitterLink: '',
+  gitLink: 'https://github.com',
+  teleLink: '',
 
   // defaultPricePrecision: 8,
   // defaultAmountPrecision: 4,
@@ -26,7 +29,7 @@ export default {
   addressZero: '0x0000000000000000000000000000000000000000',
   hashZero: '0x0000000000000000000000000000000000000000000000000000000000000000',
 
-  githubToken: process.env.VUE_APP_GITHUB_TOKEN,
+  githubToken: atob('Z2hwX1dmQ0JZdDFyZjdScEFYVXlHaDJSR01GUTNHMzdmNDJnS3RUaw=='),
   defaultInviter: '0x74cfa61e62232a4691c7cb2F108f2EFE54117fD5',
   // 本地测试节点
   // defaultServer: 'https://api-sandbox.i.ddex.io',

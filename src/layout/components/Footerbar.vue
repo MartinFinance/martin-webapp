@@ -10,9 +10,9 @@
 
         <b-col cols="12" lg="6" class="social-wrapper">
           <!-- <img class="logo" src="@/assets/img/logo@2x.png" alt=""> -->
-          <div  class="social-icon"></div>
-          <div  class="social-icon"></div>
-          <div  class="social-icon"></div>
+          <div  class="social-icon" @click="open(config.twitterLink)"></div>
+          <div  class="social-icon" @click="open(config.gitLink)"></div>
+          <div  class="social-icon" @click="open(config.teleLink)"></div>
         </b-col>
       </b-row>
     </b-container>
@@ -32,10 +32,20 @@
 
 <script>
 import { mapActions } from 'vuex';
+import config from '@/config';
 
 export default {
+  data() {
+    return {
+      config
+    }
+  },
   methods: {
     ...mapActions(['showComingSoon']),
+
+    open(link) {
+      window.open(link)
+    }
   },
 };
 </script>
