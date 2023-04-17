@@ -270,7 +270,9 @@ export default defineComponent({
           ]),
         });
 
+        console.log('approveTxHash: ', approveTxHash);
         const approveTx = await provider.waitForTransaction(approveTxHash);
+        console.log('approveTxHash finish');
 
         if (approveTx.status !== 1) {
           this.showError('Approve fail，please retry');
@@ -282,6 +284,8 @@ export default defineComponent({
           });
           this.approved = true;
         }
+      } catch (e) {
+        console.error(e);
       } finally {
         this.submitting = false;
       }
