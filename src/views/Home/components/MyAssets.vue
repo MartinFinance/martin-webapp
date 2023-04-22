@@ -25,31 +25,33 @@
       </div>
     </div>
     <h3>My Subscription</h3>
-    <table class="reward-table">
-      <thead class="table-head">
-        <tr>
-          <th>Product</th>
-          <th>Value</th>
-          <th v-if="user.period === 1">Available</th>
-          <th>Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="table-row">
-          <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
-          <td  v-if="user.period === 0">
-           $ {{ user.withdrawable  / 10 ** user.usdDecimals | toFixed }}
-          </td>
-          <td  v-if="user.period === 1">
-           $ {{ user.amount365  / 10 ** user.usdDecimals | toFixed}}
-          </td>
-          <td v-if="user.period === 1">
-           $ {{ user.withdrawable  / 10 ** user.usdDecimals | toFixed }}
-          </td>
-          <td>{{ time | formatTime('yyyy-MM-DD HH:mm:ss') }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper">
+      <table class="reward-table" >
+        <thead class="table-head">
+          <tr>
+            <th>Product</th>
+            <th>Value</th>
+            <th v-if="user.period === 1">Available</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row">
+            <td>{{ user.period === 0 ? 'Regular Interest' : 'Daily Interest' }}</td>
+            <td  v-if="user.period === 0">
+            $ {{ user.withdrawable  / 10 ** user.usdDecimals | toFixed }}
+            </td>
+            <td  v-if="user.period === 1">
+            $ {{ user.amount365  / 10 ** user.usdDecimals | toFixed}}
+            </td>
+            <td v-if="user.period === 1">
+            $ {{ user.withdrawable  / 10 ** user.usdDecimals | toFixed }}
+            </td>
+            <td>{{ time | formatTime('yyyy-MM-DD') }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <b-row align-h="center">
       <div class="btn-wrapper">
         <b-button
@@ -272,15 +274,42 @@ export default {
     display: none;
   }
 
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .reward-table {
+    // width: 450px;
+    table-layout: fixed;
+  }
+
   .table-head {
+    height: 40px;
+    font-size: 14px;
     th {
       padding: 0 8px;
+
+      &:nth-child(1) {
+        width: 90px;
+      }
+
+      &:nth-child(2) {
+        width: 110px;
+      }
+      &:nth-child(3) {
+        width: 110px;
+      }
+      &:nth-child(4) {
+        width: 100px;
+      }
     }
   }
   .table-row {
     font-size: 14px;
+    height: 40px;
     td {
-      padding: 4px 8px;
+      padding: 0px 8px;
     }
   }
 

@@ -5,6 +5,8 @@ export default {
   twitterLink: '',
   gitLink: 'https://github.com',
   teleLink: '',
+  gitTreeDataUrl: 'https://api.github.com/repos/MartinFinance/martin-merkletreedata',
+
   // defaultPricePrecision: 8,
   // defaultAmountPrecision: 4,
   // defaultExpireTime: 3600 * 24 * 365 * 10, // 秒
