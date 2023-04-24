@@ -73,12 +73,12 @@ interest payment time：
               <span class="line"></span>
               <div class="timeline-item">
                 <div class="discribe">Accrual Start Date</div>
-                <div class="time">{{valueDate}} 08:00:00</div>
+                <div class="time">{{valueDate}} {{  config.debug ? '08:00:00' : '' }}</div>
               </div>
               <span class="line"></span>
               <div class="timeline-item">
                 <div class="discribe">First Distribution Date</div>
-                <div class="time">{{interestDate}} 08:00:00</div>
+                <div class="time">{{interestDate}} {{  config.debug ? '08:00:00' : '' }}</div>
               </div>
             </div>
           </div>
@@ -156,7 +156,9 @@ export default defineComponent({
     },
 
     subscriptionDate() {
-      return moment(this.time).format('yyyy-MM-DD HH:mm:ss');
+      // return moment(this.time).format('yyyy-MM-DD HH:mm:ss');
+      const result = moment(this.time).format('yyyy-MM-DD') + config.debug ? moment(this.time).format(' HH:mm:ss') : '';
+      return result;
     },
 
     valueDate() {
