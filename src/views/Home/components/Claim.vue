@@ -507,12 +507,12 @@ export default defineComponent({
       margin-top: 24px;
     }
 
-    .redeem-btn,
- .subscribe-btn {
-    // margin-top: 50px;
-    padding: 0.25rem 2rem;
-  }
 
+    .cancel-btn,
+  .subscribe-btn {
+      height: 48px;
+      padding: 0.25rem 2rem;
+    }
 }
 
 </style>

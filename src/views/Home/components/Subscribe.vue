@@ -613,6 +613,20 @@ export default defineComponent({
     }
   }
 
+  .cancel-btn,
+  .subscribe-btn {
+    // margin-top: 50px;
+    height: 48px;
+    padding: 0.25rem 2rem;
+    font-weight: bold;
+    background: #FFB600 !important;
+    color: #292929 !important;
+    line-height: 30px;
+    border-radius: 28px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
   .right-section {
     // padding-left: 32px;
   }
@@ -628,11 +642,10 @@ export default defineComponent({
     }
 
     .redeem-btn,
- .subscribe-btn {
-    // margin-top: 50px;
-    padding: 0.25rem 2rem;
-  }
-
+  .subscribe-btn {
+      height: 48px;
+      padding: 0.25rem 2rem;
+    }
 }
 
 </style>

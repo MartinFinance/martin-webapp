@@ -466,6 +466,11 @@ export default {
     .rules-list {
       font-size: 14px;
     }
+
+    .claim-btn,
+    .invite-btn {
+      height: 48px;
+    }
     .invitation-container {
         margin-top: 30px;
         padding-left: 16px;

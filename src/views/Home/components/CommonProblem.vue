@@ -188,7 +188,7 @@ h2 {
 
   .problems {
       padding-top: 40px;
-      padding-bottom: 40px;
+      padding-bottom: 1px;
     }
 
     h2 {

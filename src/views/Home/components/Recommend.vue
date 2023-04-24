@@ -222,18 +222,21 @@ table {
   .recommend-container {
       padding-left: 16px;
       padding-right: 16px;
+      margin-bottom: 24px;
+
       // overflow-x: hidden;
       .card {
         margin-bottom: 24px;
       }
     .left {
+      text-align: center;
       .dog-bg {
           width: 700px;
           // left: -200px;
           // top: -150px;
         }
         & .dog-img {
-          width: 330px;
+          width: 230px;
         }
     }
 

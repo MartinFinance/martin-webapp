@@ -326,11 +326,9 @@ export default {
 
   .redeem-btn,
  .subscribe-btn {
-    // margin-top: 50px;
+    height: 48px;
     padding: 0.25rem 2rem;
   }
 }
-
-
 
 </style>
