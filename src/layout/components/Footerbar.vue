@@ -103,9 +103,9 @@ export default {
       }
     }
     &:nth-child(2) {
-      background-image: url(~@/assets/img/icon-discord@2x.png);
+      background-image: url(~@/assets/img/icon-git@2x.png);
       &:hover {
-        background-image: url(~@/assets/img/icon-discord-a@2x.png);
+        background-image: url(~@/assets/img/icon-git-a@2x.png);
       }
 
     }
