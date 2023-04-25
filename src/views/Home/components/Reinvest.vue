@@ -134,6 +134,7 @@ export default defineComponent({
   },
   data() {
     return {
+      config,
       invitee: config.addressZero,
       submitting: false,
       amount: '',

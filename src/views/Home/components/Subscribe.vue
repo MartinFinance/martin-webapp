@@ -164,6 +164,7 @@ export default defineComponent({
   data() {
     const { refer } = this.$route.query;
     return {
+      config,
       invitee: refer || config.defaultInviter,
       submitting: false,
       amount: '',
