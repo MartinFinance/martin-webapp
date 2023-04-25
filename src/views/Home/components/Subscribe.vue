@@ -84,7 +84,7 @@ interest payment time：
           <div class="content">
             <div class="timeline">
               <div class="timeline-item">
-                <div class="discribe">Subscription date</div>
+                <div class="discribe">Subscription Date</div>
                 <div class="time">{{subscriptionDate}}</div>
               </div>
               <span class="line"></span>
