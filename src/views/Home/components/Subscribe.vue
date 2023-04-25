@@ -222,7 +222,11 @@ export default defineComponent({
 
     subscriptionDate() {
       // return moment().format('yyyy-MM-DD HH:mm:ss');
-      const result = moment().format('yyyy-MM-DD') + config.debug ? moment(this.time).format(' HH:mm:ss') : '';
+      const result = moment().format('yyyy-MM-DD') + (config.debug ? moment(this.time).format(' HH:mm:ss') : '');
+
+      console.log( moment().format('yyyy-MM-DD'))
+      console.log( result)
+
       return result;
     },
 

@@ -158,7 +158,7 @@ export default defineComponent({
 
     subscriptionDate() {
       // return moment(this.time).format('yyyy-MM-DD HH:mm:ss');
-      const result = moment(this.time).format('yyyy-MM-DD') + config.debug ? moment(this.time).format(' HH:mm:ss') : '';
+      const result = moment(this.time).format('yyyy-MM-DD') +( config.debug ? moment(this.time).format(' HH:mm:ss') : '');
       return result;
     },
 
